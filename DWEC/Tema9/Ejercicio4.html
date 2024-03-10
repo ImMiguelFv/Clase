@@ -1,0 +1,61 @@
+<!-- Escribe un programa basado en promesas con el que detectes cuando el usuario ha
+realizado dos acciones que te interesen. Cuando se produzca se debe mostrar un
+mensaje indicando que está hecho.
+Por ejemplo, si el usuario hace clic sobre un enlace y a continuación pulsa la tecla g
+muestra en pantalla “Patrón detectado”
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detector de Patrón</title>
+</head>
+<body>
+
+  <a href="#" id="enlace">Haz clic aquí</a>
+
+  <script>
+    // Función para esperar el clic en el enlace
+    function esperarClicEnlace() {
+      return new Promise(resolve => {
+        document.getElementById('enlace').addEventListener('click', () => {
+          resolve();
+        });
+      });
+    }
+
+    // Función para esperar la pulsación de la tecla 'g'
+    function esperarTeclaG() {
+      return new Promise(resolve => {
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'g') {
+            resolve();
+          }
+        });
+      });
+    }
+
+    // Función principal que espera ambas acciones
+    async function detectarPatron() {
+      console.log('Esperando clic en enlace y pulsación de tecla "g"...');
+
+      // Esperar el clic en el enlace
+      await esperarClicEnlace();
+      console.log('Enlace clicado.');
+
+      // Esperar la pulsación de la tecla 'g'
+      await esperarTeclaG();
+      console.log('Tecla "g" pulsada.');
+
+      // Mostrar el mensaje cuando ambas acciones se completen
+      console.log('¡Patrón detectado!');
+      alert('¡Patrón detectado!');
+    }
+
+    // Llamar a la función principal
+    detectarPatron();
+  </script>
+
+</body>
+</html>

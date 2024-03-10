@@ -1,0 +1,56 @@
+<!-- Crea una promesa para detectar cuando el DOM está completamente cargado.
+Mientras no lo esté, se debe mostrar el mensaje “Cargando” y, cuando lo esté, el
+mensaje “Listo para actuar”
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de carga del DOM</title>
+    <style>
+        #loadingMessage {
+        text-align: center;
+            font-size: 18px;
+            color: blue;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <p id="loadingMessage">Cargando...</p>
+
+    <script>
+        function waitForDOM() {
+            return new Promise((resolve) => {
+                if (document.readyState === 'complete') {
+                    resolve();
+                } else {
+                    document.addEventListener('DOMContentLoaded', () => {
+                        resolve();
+                    });
+                }
+            });
+        }
+
+        async function init() {
+            try {
+                await waitForDOM();
+                document.getElementById('loadingMessage').innerHTML = 'Cargando...'; // Restaurar el mensaje original
+                await delay(2000); // Retraso de 2 segundos para que se note
+                document.getElementById('loadingMessage').innerHTML = 'Listo para actuar';
+            } catch (error) {
+                console.error('Hubo un error al esperar la carga del DOM:', error);
+            }
+        }
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        init();
+    </script>
+
+</body>
+</html>

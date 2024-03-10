@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacenamiento Web</title>
+</head>
+<body>
+<script>
+    // Datos del vehículo y propietario
+    var vehiculo = {
+        marca: "Toyota",
+        modelo: "Corolla",
+        numeroBastidor: "123456789",
+        cilindrada: "2000 cc",
+        numeroPuertas: 4,
+        color: "Rojo"
+    };
+    var propietario = {
+        nombre: "Juan",
+        apellidos: "Pérez",
+        direccion: "Calle Principal 123",
+        telefono: "987654321",
+        correo: "juan@example.com"
+    };
+    // Guardar datos en el almacenamiento de sesión
+    sessionStorage.setItem('informacionVehiculo', JSON.stringify(vehiculo));
+    sessionStorage.setItem('informacionPropietario', JSON.stringify(propietario));
+    // Leer datos del almacenamiento de sesión
+    var vehiculoGuardado = JSON.parse(sessionStorage.getItem('informacionVehiculo'));
+    var propietarioGuardado = JSON.parse(sessionStorage.getItem('informacionPropietario'));
+    // Mostrar datos en formato HTML
+    document.body.innerHTML += "<h2>Información del Vehículo:</h2>";
+    for (var key in vehiculoGuardado) {
+        document.body.innerHTML += "<p><strong>" + key + ":</strong> " + vehiculoGuardado[key] + "</p>";
+    }
+    document.body.innerHTML += "<h2>Información del Propietario:</h2>";
+    for (var key in propietarioGuardado) {
+        document.body.innerHTML += "<p><strong>" + key + ":</strong> " + propietarioGuardado[key] + "</p>";
+    }
+    // Eliminar datos al cerrar el navegador
+    window.addEventListener('beforeunload', function() {
+        sessionStorage.removeItem('informacionVehiculo');
+        sessionStorage.removeItem('informacionPropietario');
+    });
+</script>
+</body>
+</html>

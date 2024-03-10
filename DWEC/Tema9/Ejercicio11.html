@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulta de usuario de GitHub</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  .container {
+    max-width: 50%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  label {
+    font-weight: bold;
+  }
+  input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  #userData {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+  }
+  img{
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  .Vaina{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Consulta de usuario de GitHub</h1>
+  <label for="username">Nombre de usuario:</label>
+  <input type="text" id="username" placeholder="Ingrese el nombre de usuario de GitHub">
+  <button onclick="fetchGitHubUser()">Consultar</button>
+  <div id="userData"></div>
+</div>
+
+<script>
+  async function fetchGitHubUser() {
+    const username = document.getElementById('username').value.trim();
+    const userDataContainer = document.getElementById('userData');
+    userDataContainer.innerHTML = ''; // Limpiamos el contenedor de datos
+
+    try {
+      // Realizamos la solicitud utilizando Fetch a la API de GitHub
+      const response = await fetch(`https://api.github.com/users/${username}`);
+      
+      // Verificamos si la respuesta es exitosa (código de estado 200)
+      if (!response.ok) {
+        throw new Error('Ocurrió un error al obtener los datos del usuario.');
+      }
+      
+      // Convertimos la respuesta a formato JSON
+      const userData = await response.json();
+      
+      // Mostramos los datos del usuario
+      userDataContainer.innerHTML = `
+      <img src="${userData.avatar_url}" alt="Avatar de usuario">
+      <p><strong>Nombre de usuario:</strong> ${userData.login}</p>
+      <p><strong>Nombre:</strong> ${userData.name || 'No disponible'}</p>
+      <p><strong>Ubicación:</strong> ${userData.location || 'No disponible'}</p>
+      <p><strong>Biografía:</strong> ${userData.bio || 'No disponible'}</p>
+      <p><strong>Repositorios públicos:</strong> ${userData.public_repos}</p>
+      <p><strong>Seguidores:</strong> ${userData.followers}</p>
+      </div>
+      
+`;
+
+    } catch (error) {
+      // Capturamos cualquier error que pueda ocurrir durante la solicitud
+      userDataContainer.innerHTML = `<p>Error: ${error.message}</p>`;
+    }
+  }
+</script>
+</body>
+</html>

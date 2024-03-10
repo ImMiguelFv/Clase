@@ -1,0 +1,81 @@
+<!-- Ejercicio 1
+Escribe una aplicación que contenga un switch con siete opciones y dentro de cada
+una de ellas crea un objeto con cada uno de los siete constructores que hemos visto
+para definir los siete tipos de errores que hemos visto.
+Utiliza una única estructura try…catch que sea capaz de gestionar cualquiera de
+ellos.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Errores</title>
+</head>
+<body>
+
+<button onclick="lanzarError('EvalError')">EvalError</button>
+<button onclick="lanzarError('InternalError')">InternalError</button>
+<button onclick="lanzarError('RangeError')">RangeError</button>
+<button onclick="lanzarError('ReferenceError')">ReferenceError</button>
+<button onclick="lanzarError('SyntaxError')">SyntaxError</button>
+<button onclick="lanzarError('TypeError')">TypeError</button>
+<button onclick="lanzarError('URIError')">URIError</button>
+
+<script>
+function lanzarError(tipo) {
+  try {
+    switch (tipo) {
+      case 'EvalError':
+            try {
+        eval("alert('Hola Mundo')");
+        } catch (error) {
+        console.error('Se produjo un EvalError:', error.message);
+        }   
+        break
+      case 'InternalError':
+            try {
+        throw new InternalError('Este es un mensaje de error interno');
+        } catch (error) {
+        console.error('Se produjo un InternalError:', error.message);
+        }
+        break
+      case 'RangeError':
+            try {
+        let array = new Array(-1);
+        } catch (error) {
+        console.error('Se produjo un RangeError:', error.message);
+        }
+        break
+      case 'ReferenceError':
+            try {
+        console.log(variableNoDefinida);
+        } catch (error) {
+        console.error('Se produjo un ReferenceError:', error.message);
+        }
+        break
+      case 'SyntaxError':
+        throw new SyntaxError('Este es un mensaje de SyntaxError');
+        break
+      case 'TypeError':
+        throw new TypeError('Este es un mensaje de TypeError');
+        break
+      case 'URIError':
+            try {
+        decodeURIComponent('%');
+        } catch (error) {
+        console.error('Se produjo un URIError:', error.message);
+        }
+        break
+      default:
+        console.error('Tipo de error no reconocido');
+    }
+  } catch (error) {
+    console.error(`¡Se capturó un error de tipo ${tipo}!`);
+    console.error(`Mensaje: ${error.message}`);
+  }
+}
+</script>
+
+</body>
+</html>

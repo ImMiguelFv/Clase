@@ -1,0 +1,213 @@
+/* Propiedades del header */
+.cabecera {
+  display: flex; /* Establece el modelo de caja como flexible */
+  justify-content: space-around; /* Distribuye el espacio alrededor de los elementos hijos */
+  align-items: center; /* Centra los elementos verticalmente */
+  height: 120px; /* Altura del header */
+  padding: 5px; /* Relleno general */
+  background-color: var(--rojo); /* Color de fondo del header */
+  padding: 0 7%; /* Ajusta el padding en los lados del header */
+}
+
+/* Propiedades del logo */
+.cabecera .logo {
+  cursor: pointer; /* Cambia el cursor a un puntero al pasar por encima */
+  font-size: 4vw; /* Tamaño del texto del logo en unidades vw */
+  padding-left: 20px; /* Margen izquierdo del logo */
+  font-family: logo; /* Uso de la fuente 'logo' */
+}
+
+.cabecera .logo a {
+  color: var(--amarillo); /* Color del texto del logo */
+    text-decoration: none;/* elimino la decoracion */
+    cursor: pointer; /* Establecemos cursor como puntero */
+  }
+  
+
+.cabecera img {
+  color: var(--amarillo); /* Color del texto del logo (se aplica a las imágenes dentro de la cabecera) */
+}
+
+/* Propiedades de la barra de navegación y sus componentes */
+.cabecera .nav_bar .nav-links {
+  display: flex; /* Establece el modelo de caja como flexible */
+  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: space-evenly; /* Distribuye el espacio entre los elementos de manera uniforme */
+  list-style: none; /* Elimina el estilo de lista de las opciones de navegación */
+  display: inline-block; /* Coloca los elementos en línea */
+}
+
+.cabecera .nav_bar .nav-links li {
+  padding: 0 1vw; /* Ajusta el padding horizontal con unidades vw */
+  display: inline-block;
+  font-size: 2vw; /* Utiliza unidades vw para hacer el tamaño de la fuente responsivo */
+}
+
+.cabecera .nav_bar .nav-links a {
+  font-family: logo; /* Uso de la fuente 'logo' para los enlaces */
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  color: var(--amarillo); /* Color de los enlaces */
+}
+
+.cabecera .nav_bar .intercambio-navegacion {
+  font-size: 40px; /* Tamaño del icono de intercambio de navegación */
+  cursor: pointer; /* Cambia el cursor a un puntero al pasar por encima */
+  color: var(--amarillo); /* Color del icono de intercambio de navegación */
+  background-color: transparent; /* Fondo transparente */
+  border: none; /* Sin borde */
+  padding: 0 10px; /* Margen interno del icono de intercambio de navegación */
+  display: none; /* Inicialmente oculto */
+  margin-right: 10px; /* Margen derecho del icono de intercambio de navegación */
+}
+
+/* Estilos para las líneas del icono de intercambio de navegación (hamburguesa) */
+._layer {
+  background: #333333;
+  margin-bottom: 4px;
+  border-radius: 2px;
+  width: 28px;
+  height: 4px;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+  transition: all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+}
+
+/* Animación de las líneas al pasar el ratón sobre el icono de hamburguesa */
+.hamburger:hover .-top {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+.hamburger:hover .-bottom {
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+/* Animación del icono de hamburguesa en estado activo */
+.hamburger.is-active .-top {
+  -webkit-transform: translateY(200%) rotate(45deg) !important;
+  -ms-transform: translateY(200%) rotate(45deg) !important;
+  transform: translateY(200%) rotate(45deg) !important;
+}
+
+.hamburger.is-active .-mid {
+  opacity: 0; /* Hace invisible la línea central al activar el icono */
+}
+
+.hamburger.is-active .-bottom {
+  -webkit-transform: translateY(-200%) rotate(135deg) !important;
+  -ms-transform: translateY(-200%) rotate(135deg) !important;
+  transform: translateY(-200%) rotate(135deg) !important;
+}
+
+/* Hovers de la cabecera */
+.cabecera .logo a:hover {
+  color: var(--background); /* Cambia el color de los enlaces al pasar el ratón */
+  font-size: 4.5vw; /* Utiliza unidades vw para hacer el tamaño de la fuente responsivo */
+}
+
+.cabecera .nav_bar .nav-links a:hover {
+  color: var(--background); /* Cambia el color de los enlaces al pasar el ratón */
+  font-size: 2.5vw; /* Utiliza unidades vw para hacer el tamaño de la fuente responsivo */
+}
+
+.cabecera .nav_bar .intercambio-navegacion:hover {
+  color: var(--background); /* Cambia el color del icono de intercambio al pasar el ratón */
+  transform: scale(1.1); /* Escala el icono al pasar el ratón */
+  transition: 0.3s; /* Transición suave de 0.3 segundos */
+  text-shadow: 0px 0px 10px 10px var(--background); /* Efecto de sombra al pasar el ratón */
+}
+
+/* Media query para dispositivos con un ancho máximo de 768px */
+@media (max-width: 768px) {
+  .cabecera {
+      position: fixed;
+      display: flex; /* Disposición de los elementos en línea */
+      justify-content: space-between; /* Espaciado uniforme de los elementos en el header */
+      align-items: center; /* Alineación central de los elementos en el header */
+      height: 80px; /* Altura del header en dispositivos móviles */
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000; /* Índice de apilamiento para estar por encima de otros elementos */
+  }
+
+  .cabecera .logo {
+      font-size: 25px; /* Tamaño del texto del logo en dispositivos móviles */
+  }
+
+  .cabecera .nav_bar .intercambio-navegacion {
+      display: block; /* Mostrar el icono de intercambio en dispositivos móviles */
+      margin-right: 10px;
+  }
+
+  .cabecera .nav_bar .nav-links li {
+      line-height: 40px; /* Altura de línea para las opciones de navegación en dispositivos móviles */
+      padding: 0 1vw; /* Ajusta el padding horizontal con unidades vw */
+      display: inline-block;
+      font-size: 5vw; /* Utiliza unidades vw para hacer el tamaño de la fuente responsivo */
+  }
+
+  .cabecera .nav_bar .nav-links li:hover {
+      padding: 0 1vw; /* Ajusta el padding horizontal con unidades vw */
+      font-size: 5vw; /* Utiliza unidades vw para hacer el tamaño de la fuente responsivo */
+  }
+
+  .cabecera .nav_bar .nav-links {
+      display: flex;
+      flex-direction: column; /* Cambiar la dirección de las opciones de navegación a columna */
+      position: fixed; /* Fijar la posición de las opciones de navegación */
+      top: -100%; /* Inicialmente fuera de la pantalla */
+      left: 0;
+      width: 100%;
+      align-items: center;
+      padding: 20px 0;
+      background-color: var(--rojo);
+  }
+
+  .cabecera .nav_bar .nav-links--visible {
+      top: 80px; /* Posición visible de las opciones de navegación */
+      animation: 0.9s cubic-bezier(.25, 1, .30, 1) wipe-in-down both;
+  }
+}
+
+/* Animación de entrada para opciones de navegación en dispositivos móviles */
+@keyframes wipe-in-down {
+  from {
+      clip-path: inset(0 0 100% 0);
+  }
+  to {
+      clip-path: inset(0 0 0 0);
+  }
+}
+/* Footer */
+/* Fin del contenido */
+
+/* Estilos para el pie de página */
+.footer-contacto {
+  /* Estilo para la sección de contacto en el pie de página */
+  margin: 0;
+  background-color: var(--rojo);
+  color: var(--amarillo);
+  margin-top: auto;
+  bottom: 0;
+  height: 90px;
+  text-align: center;
+
+}
+
+.footer-container {
+  /* Estilo para el contenedor del pie de página */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-contacto p {
+  /* Estilo para los párrafos en la sección de contacto del pie de página */
+  margin-bottom: 5px; /* Reducción del margen inferior */
+  font-size: 1rem; /* Reducción del tamaño de fuente */
+}

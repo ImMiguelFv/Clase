@@ -1,0 +1,31 @@
+<!-- Ejercicio 2 Crea un programa que, partiendo de un código HTML con una lista ordenada de personas, devuelva los nombres de la primera y de la última persona de la lista. -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <h2>Lista de Personas</h2>
+    <ol id="listaPersonas">
+        <li>Miguel Ferrón</li>
+        <li>Pablo Ghodian</li>
+        <li>Seo Gonzalez</li>
+        <li>Sergio Pérez</li>
+    </ol>
+    
+    <script> 
+        // Obtiene la lista de personas
+        let listaPersonas = document.getElementById("listaPersonas").getElementsByTagName("li");
+        // Obtiene el nombre de la primera persona
+        let primerNombre = listaPersonas[0].textContent;
+        // Obtiene el nombre de la última persona
+        let ultimaPersonaIndex = listaPersonas.length - 1;
+        let ultimaNombre = listaPersonas[ultimaPersonaIndex].textContent;
+        
+        // Mostrar los nombres en la consola (puedes modificar esto según tus necesidades)
+        document.write("Primer Nombre:", primerNombre +"<br>");
+        document.write("Último Nombre:", ultimaNombre);</script>
+</body>
+</html>

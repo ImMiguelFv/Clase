@@ -1,0 +1,33 @@
+<!-- Escribe un programa que compruebe cada 10 segundos si existen cookies y las borre.
+ -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+<body>
+
+    <script>
+        // Función para comprobar y borrar cookies
+        function comprobarYBorrarCookies() {
+            // Obtener todas las cookies
+            let cookies = document.cookie.split(';');
+
+            // Iterar sobre las cookies y borrar cada una
+            cookies.forEach(cookie => {
+                let nombreCookie = cookie.split('=')[0].trim();
+                document.cookie = `${nombreCookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            });
+
+            // Mostrar mensaje en la consola (puedes ajustar según tus necesidades)
+            console.log("Cookies borradas");
+        }
+
+        // Establecer intervalo para comprobar y borrar cookies cada 10 segundos
+        setInterval(comprobarYBorrarCookies, 10000); // 10 segundos en milisegundos
+    </script>
+
+</body>
+</html>

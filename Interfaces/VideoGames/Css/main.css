@@ -1,0 +1,296 @@
+/* Fuentes */
+@font-face {
+  font-family: "logo";
+  src: url(../Fonts/Platinum_Logo/Platinum\ Sign\ Over.ttf);
+}
+@font-face {
+  font-family: "like";
+  src: url(../Fonts/widges/Widges-Demo.ttf);
+}
+@font-face {
+  font-family: "xeno";
+  src: url(../Fonts/Xeno/Xenogears_font.ttf);
+}
+/* Variables globales */
+:root {
+  --darkRed: hsla(0, 0%, 100%, 0);
+  --lightRed: #ffffff;
+  --darkOrange: #be5905;
+  --lightOrange: #00ffb3;
+  --background: #fffaf4;
+}    
+/* Propiedades globales */
+*{
+  /* Indican desde donde se inicia */
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Propiedades del header */
+  .cabecera {
+  display: flex; /* Disposición de los elementos */
+  justify-content: space-around; /* Como se alinean los elementos */
+  align-items: center; /* Desde donde se aliean */
+  height: 90px; /* Altura de la cabecera */
+  padding: 20px 20px; /* Margenes interiores */
+  background-color: var(--darkRed); /* Color de fondo, */
+  
+}    
+  /* Propiedades del logo */
+  .cabecera .logo {
+      cursor: pointer;
+      font-size: 40px;
+      vertical-align:middle ; /* Alineamiento */
+      padding-left: 20px;
+      font-family: logo;
+      color: var(--lightOrange); /* Color al que cambiará */
+      text-shadow: 0 0 10px var(--lightOrange);
+
+  }
+  
+  /* Propiedades de la barra de navegación y sus componentes */
+  .cabecera .nav_bar .nav-links{
+      list-style: none;         /* Elimina el punto de lista */
+      
+
+  }
+
+  .cabecera .nav_bar .nav-links li{
+      display: inline-block;  /* Coloca los elementos en linea */
+      padding: 0 10px;  /* El margen de dentro del elemento */
+      font-family: like;
+      font-size: 20px;
+      color: var(--lightOrange); /* Color al que cambiará */
+      text-shadow: 0 0 10px var(--lightOrange); /* Efecto de borde fosforescente en hover */
+
+  }
+  
+  .cabecera .nav_bar .nav-links a {
+      text-decoration: none; /* Elimina el subrayado */
+      color: var(--background); /* Color de la fuente */
+      font-size: 20px; /* Tamaño de la fuente */
+    }
+    .cabecera .nav_bar .intercambio-navegacion {
+        font-size: 40px;
+        cursor: pointer;
+        color: var(--background);
+        background-color: transparent;
+        border: none;
+        padding: 0 10px;
+        display: none;
+        margin-right: 10px;
+    }
+  /* Cambia el tamaño al pasar el mouse */
+    
+
+  
+  .cabecera .nav_bar .nav-links li:hover a {
+    color: var(--lightOrange); /* Color al que cambiará */
+    text-shadow: 0 0 10px var(--lightOrange); /* Efecto de borde fosforescente en hover */
+    transform: scale(1.1);
+  }
+  
+  .cabecera .nav_bar .intercambio-navegacion:hover {
+    color: var(--lightOrange);
+    transform: scale(1.1);
+    transition: 0.3s;
+    text-shadow: 0 0 10px var(--lightOrange); /* Efecto de borde fosforescente en hover */
+  }
+
+
+/* Estilos generales del cuerpo del documento */
+body {
+  background-color: #000000;
+  /* Color de fondo del cuerpo del documento */
+
+}
+
+.hero{
+  /* Color de fondo del cuerpo del documento */ 
+margin-top: 60px;
+  text-align: center; 
+  height: 200px;
+}
+
+.hero h1{
+  padding-top: 20px;
+  /* Color de fondo del cuerpo del documento */ 
+  color: var(--lightOrange) ;
+  font-family: "logo";
+  font-size: 50px;
+  text-shadow: 0 0 10px var(--lightOrange); /* Efecto de borde fosforescente en hover */
+}
+/* Noticias */
+  .noticias{
+    margin-top: 40px;
+    text-align: center; 
+
+  }
+  
+  .noticias h2{
+    font-size: 24px;
+    font-family: like;
+    color: #00ffb3;
+    margin-bottom: 5px;
+  }
+  .noticias .swiper-container .swiper-slide img{
+    width: 70%;
+  }
+  .noticias .swiper-container .swiper-slide .texto-superpuesto{
+    font-size: 16px;
+    color: #00ffb3;
+  }
+
+/* Sección de Juegos */
+.zonadejuegos {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #333;
+}
+
+.zonadejuegos h2 {
+  color: var(--lightOrange);
+  font-family: "like";
+  font-size: 30px;
+  text-align: center;
+}
+
+.zonadejuegos ul {
+  list-style: none;
+}
+
+.zonadejuegos li {
+  margin-bottom: 10px;
+}
+
+.zonadejuegos a {
+  text-decoration: none;
+  color: var(--darkOrange);
+  font-size: 18px;
+}
+
+.zonadejuegos a:hover {
+  color: var(--lightOrange);
+}
+
+/* Contenido Principal */
+.contenido-principal {
+  margin-top:0px;
+  padding: 20px;
+  text-align: center;
+  font-family: like;
+
+}
+
+.contenido-principal h2 {
+  color: white;
+  font-size: 28px;
+}
+
+.contenido-principal p {
+  margin-top: 10px;
+  color: white;
+  font-size: 23px;
+}
+.zonadejuegos{
+  min-width: 100%;
+
+  background: rgb(0,0,0);
+  background: 
+  linear-gradient(180deg, rgba(0,0,0,1) 32%, rgba(0,74,52,1) 55%, rgba(0,144,102,1) 68%, rgba(0,200,141,1) 79%, rgb(0, 230, 161) 90%);
+}
+.juegos{
+  margin-top: 20px;
+  padding: 20px;
+
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* Aqui la estructura de cada juego */
+.zonadejuegos .juego {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.zonadejuegos .juego a {
+  text-decoration: none;
+  color: var(--background);
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.zonadejuegos .juego img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Footer */
+.Contacto {
+  background: #333;
+  padding: 20px;
+  position: sticky;
+  top: 0; 
+  color: #fffaf4;
+}
+
+/* Media Query zone */
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .cabecera {
+    display: flex; /* Disposición de los elementos */
+    justify-content: space-between; /* Como se alinean los elementos */
+    align-items: center; /* Desde donde se aliean */
+    height: 9%; /* Altura de la cabecera */
+    padding: 20 20px; /* Margenes interiores */
+    background-color: transparent; /* Color de fondo, */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}    
+.cabecera .logo{
+  font-size: 25px;
+}
+    .cabecera .nav_bar .intercambio-navegacion {
+        display: block;
+    }
+    .cabecera .nav_bar .nav-links li {
+        line-height: 40px;
+    }
+
+    
+    .cabecera .nav_bar .nav-links {
+        display: flex;
+        flex-direction: column;
+        background-color: #33333391;
+        position: fixed;
+        top: -100%; /* Cambiado de 'top' a 'bottom' y valor a '-100%' */
+        left: 0;
+        width: 100%;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .cabecera .nav_bar .nav-links--visible {
+        top: 60px; /* Cambiado de 'left' a 'top' y valor a '0' */
+    }
+    .juegos{
+      margin-top: 20px;
+      padding: 20px;
+    gap: 10px;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+}

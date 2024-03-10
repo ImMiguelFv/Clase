@@ -1,0 +1,42 @@
+<!-- 
+## Ejercicio 1
+Crea una página HTML con un contenedor de una imagen. Debes tener preparadas 10 imágenes y
+en función de la tecla numérica que se pulse (0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
+debe aparecer esa imagen en el contenedor. Cuando se pulse otro número, debe vaciarse el contenedor y cargarse de nuevo su imagen correspondiente.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="contenedor">
+        <h1>Pulse del 1 al 0 para visualizar.</h1>
+    </div>
+    <script>
+document.addEventListener('keydown', (event) => {
+    const contenedor = document.getElementById('contenedor');
+    contenedor.innerHTML = '';
+
+    // Verificar si la tecla presionada es un número del 0 al 9
+    const esNumero = /^\d$/.test(event.key);
+
+    if (esNumero) {
+        const imagen = document.createElement('img');
+        imagen.src = `https://picsum.photos/id/23${event.key}/200/300`;
+        contenedor.appendChild(imagen);
+        console.log('Tecla presionada:', event.key);
+    }
+    else {
+                const mensaje = document.createElement('h1');
+                mensaje.textContent = "No pulsaste un número del 0 al 9";
+                contenedor.appendChild(mensaje);
+                console.log('Tecla no numérica');
+            }
+});
+
+    </script>
+</body>
+</html>

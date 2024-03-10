@@ -1,0 +1,39 @@
+
+<!-- Ejercicio 1: Escribe un programa que permita modificar el estilo de un párrafo cuyo identificador es "párrafo". -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <p id="párrafo">Hola profe!! :D</p>
+    <button onclick="toggleModificacionEstilo()">Activar/Desactivar Modificación de Estilo</button>
+
+    <script>
+        //Ya que hemos dado funciones usaré botón qué activa y desactiva el estilo
+        let estiloModificado = false;
+
+        function toggleModificacionEstilo() {
+            // Obtiene el elemento párrafo por su identificador
+            let parrafo = document.getElementById("párrafo");
+
+            // Verifica si el estilo está activado o desactivado
+            if (!estiloModificado) {
+                // Activar la modificación de estilo
+                parrafo.style.color = "blue"; // Cambiar el color del texto a azul
+                parrafo.style.fontSize = "16px"; // Cambiar el tamaño del texto a 16 pixels
+                estiloModificado = true; // Activar el estilo modificado
+                
+            } else {
+                // Desactivar la modificación de estilo y restaurar el estilo original
+                parrafo.style.color = ""; // Restaurar el color original
+                parrafo.style.fontSize = ""; // Restaurar el tamaño original
+                estiloModificado = false; // Desactivar el estilo modificado
+                /* En caso de qué tengamos un elemento predefinido se pondría el color por ejemplo. Esto sería útil para los modos nocturnos */
+            }
+        }
+    </script>
+</body>
+</html>

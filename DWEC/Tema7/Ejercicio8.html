@@ -1,0 +1,239 @@
+<!-- ## Ejercicio 8
+    Juguemos a adivinar las parejas. Debes distribuir en la página una cuadrícula de 6 por 5 cajas. De las 30 cajas habrá 15 distintas.
+    Cada par de cajas será de un color distinto inicialmente todas las cajas aparecerán negras.
+    Cuando el usuario pinche sobre una caja, se revelará su auténtico color.
+    En ese momento debes arrastrar la caja al lugar donde creas que se encuentra su pareja.
+    Si aciertas, ambas cajas permanecerán boca arriba y ya no podrán interactuar con ellas.
+    Si fallas, las dos cajas volverán a su estado inicial. El programa debe detectar cuando están todas las cajas emparejadas y cuánto tiempo has tardado en resolverlo.
+    -->
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100vh;
+                margin: 0;
+                background-color: #f0f0f0;
+                font-family: 'Arial', sans-serif;
+            }
+    
+            #cronometro {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+    
+            #contenedor-juego {
+                display: grid;
+                grid-template-columns: repeat(6, 80px);
+                grid-gap: 10px;
+            }
+    
+            .caja {
+                width: 80px;
+                height: 80px;
+                background-color: black;
+                cursor: pointer;
+            }
+    
+            .caja.revelada {
+                cursor: default;
+            }
+    
+            #botonIniciar,
+            #botonReiniciar {
+                padding: 10px;
+                font-size: 16px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+    
+            #mensaje-victoria {
+                display: none;
+                text-align: center;
+                margin-top: 20px;
+            }
+    
+            #texto-victoria {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+        </style>
+        <title>Juego de Adivinar Parejas</title>
+    </head>
+    <body>
+        <!-- Contador de tiempo arriba del juego -->
+        <div id="cronometro">00:00:000</div>
+    
+        <!-- Contenedor del juego -->
+        <div id="contenedor-juego"></div>
+    
+        <!-- Botón para iniciar el juego debajo del juego -->
+        <button id="botonIniciar" onclick="iniciarJuego()">Iniciar Juego</button>
+    
+        <!-- Mensaje de victoria -->
+        <div id="mensaje-victoria">
+            <p id="texto-victoria"></p>
+        </div>
+    
+        <!-- Botón de reinicio siempre visible -->
+        <button id="botonReiniciar" onclick="location.reload()">Reiniciar Juego</button>
+        <script>
+            
+            alert("El juego consta de emparejar colores, para ellos puedes usar click y arrastrar al qué creas o simplemente clickando en uno y en otro. Disfruta y qué empiece el juego. Para iniciar click en Iniciar Juego.")
+            // Variables para el cronómetro y el tiempo transcurrido
+            let intervaloCronometro;
+            let tiempoTranscurrido = 0;
+            let juegoIniciado = false;
+            let mensajeVictoria = document.getElementById('mensaje-victoria');
+            let cronometroElemento = document.getElementById('cronometro');
+    
+            // Función para iniciar el juego
+            function iniciarJuego() {
+                if (!juegoIniciado) {
+                    juegoIniciado = true;
+                    crearCajas();
+                    intervaloCronometro = setInterval(actualizarCronometro, 10);
+                }
+            }
+    
+            // Función para actualizar el cronómetro
+            function actualizarCronometro() {
+                tiempoTranscurrido += 10;
+                actualizarVisualizacionCronometro();
+            }
+    
+            // Función para mostrar el tiempo en el cronómetro
+            function actualizarVisualizacionCronometro() {
+                const minutos = Math.floor(tiempoTranscurrido / (60 * 1000));
+                const segundos = Math.floor((tiempoTranscurrido % (60 * 1000)) / 1000);
+                const milisegundos = tiempoTranscurrido % 1000;
+                cronometroElemento.textContent = `${rellenarCerosIzquierda(minutos)}:${rellenarCerosIzquierda(segundos)}:${rellenarCerosIzquierdaTresDigitos(milisegundos)}`;
+            }
+    
+            // Función para rellenar con ceros a la izquierda (para el formato del cronómetro)
+            function rellenarCerosIzquierda(numero) {
+                return (numero < 10 ? '0' : '') + numero;
+            }
+    
+            function rellenarCerosIzquierdaTresDigitos(numero) {
+                return (numero < 10 ? '00' : (numero < 100 ? '0' : '')) + numero;
+            }
+    
+            // Función para crear las cajas del juego
+            function crearCajas() {
+                const contenedorJuego = document.getElementById('contenedor-juego');
+                const colores = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'cyan', '#333', 'crimson', 'bisque', 'olivedrab', 'lime', 'gold', 'indigo'];
+                const totalParejas = 15;
+                const tamañoGrid = 6 * 5;
+                let parejasEncontradas = 0;
+                let cajasSeleccionadas = [];
+                let cajaInicioArrastre = null;
+    
+                // Función para manejar el clic en una caja
+                function manejarClicCaja() {
+                    if (cajasSeleccionadas.length < 2 && !this.classList.contains('revelada')) {
+                        revelarCaja(this);
+                        cajasSeleccionadas.push(this);
+    
+                        if (cajasSeleccionadas.length === 2) {
+                            setTimeout(verificarCoincidencia, 500);
+                        }
+                    }
+                }
+    
+                // Función para revelar una caja
+                function revelarCaja(caja) {
+                    caja.style.backgroundColor = caja.dataset.color;
+                    caja.classList.add('revelada');
+                }
+    
+                // Función para manejar el inicio del arrastre de una caja
+                function manejarInicioArrastre(e) {
+                    cajaInicioArrastre = this;
+                }
+    
+                // Función para manejar el evento de arrastre sobre una caja
+                function manejarArrastreSobre(e) {
+                    e.preventDefault();
+                }
+    
+                // Función para manejar el evento de soltar una caja
+                function manejarSoltar() {
+                    if (cajaInicioArrastre && this !== cajaInicioArrastre && !this.classList.contains('revelada')) {
+                        revelarCaja(this);
+                        cajasSeleccionadas.push(this);
+    
+                        setTimeout(verificarCoincidencia, 500);
+                    }
+    
+                    cajaInicioArrastre = null;
+                }
+    
+                // Función para verificar si las cajas seleccionadas coinciden
+                function verificarCoincidencia() {
+                    const [caja1, caja2] = cajasSeleccionadas;
+    
+                    if (caja1.dataset.color === caja2.dataset.color) {
+                        parejasEncontradas += 2;
+                        if (parejasEncontradas === tamañoGrid) {
+                            mostrarMensajeVictoria();
+                        }
+                    } else {
+                        ocultarCajas(caja1, caja2);
+                    }
+    
+                    cajasSeleccionadas = [];
+                }
+    
+                // Función para ocultar las cajas que no coinciden
+                function ocultarCajas(caja1, caja2) {
+                    caja1.style.backgroundColor = '';
+                    caja2.style.backgroundColor = '';
+                    caja1.classList.remove('revelada');
+                    caja2.classList.remove('revelada');
+                }
+    
+                // Función para obtener el tiempo transcurrido en formato legible
+                function obtenerTiempoTranscurrido() {
+                    const minutos = Math.floor(tiempoTranscurrido / (60 * 1000));
+                    const segundos = Math.floor((tiempoTranscurrido % (60 * 1000)) / 1000);
+                    return `${rellenarCerosIzquierda(minutos)}:${rellenarCerosIzquierda(segundos)}`;
+                }
+    
+                // Función para mostrar el mensaje de victoria
+                function mostrarMensajeVictoria() {
+                    alert(`¡Felicidades! Has encontrado todas las parejas. Tiempo: ${obtenerTiempoTranscurrido()}`);
+                    detenerCronometro(intervaloCronometro);
+                }
+    
+                // Crear las cajas del juego
+                const coloresBarajados = [...colores, ...colores].sort(() => Math.random() - 0.5);
+                for (let i = 0; i < tamañoGrid; i++) {
+                    const caja = document.createElement('div');
+                    caja.classList.add('caja');
+                    caja.dataset.color = coloresBarajados[i];
+                    caja.addEventListener('click', manejarClicCaja);
+                    caja.draggable = true;
+                    caja.addEventListener('dragstart', manejarInicioArrastre);
+                    caja.addEventListener('dragover', manejarArrastreSobre);
+                    caja.addEventListener('drop', manejarSoltar);
+                    contenedorJuego.appendChild(caja);
+                }
+            }
+            function detenerCronometro() {
+            clearInterval(intervaloCronometro);
+        }
+            // Función para ocultar las cajas
+        </script>   
+</body>
+</html>

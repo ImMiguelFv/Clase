@@ -1,0 +1,34 @@
+<!-- ## Ejercicio 4
+Elabora un programa que vaya rellenando un párrafo de forma dinámica con todas las letras que vaya pulsando el usuario sobre cualquier elemento de la página.
+Al final del párrafo debes incluir un botón para limpiar el contenido del párrafo. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="paragraph"></p>
+    <button id="clearButton">Limpiar</button>
+
+    <script>
+        const paragraph = document.getElementById('paragraph');
+        const clearButton = document.getElementById('clearButton');
+
+        let input = '';
+
+        clearButton.addEventListener('click', () => {
+            input = '';
+            paragraph.textContent = input;
+        });
+
+        document.addEventListener('keypress', (event) => {
+            if (event.key.length === 1) {
+                input += event.key;
+                paragraph.textContent = input;
+            }
+        });
+    </script>
+</body>
+</html>

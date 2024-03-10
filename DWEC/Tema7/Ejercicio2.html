@@ -1,0 +1,56 @@
+<!-- ## Ejercicio 2
+Crea una aplicación cuyo código HTML contenga únicamente una caja roja.
+Cada vez que el usuario pulse alguna de las teclas de los cursores (flecha arriba, flecha abajo, flecha a la derecha, flecha a la izquierda),
+la caja debe desplazarse 10 píxeles en la dirección establecida por el cursor. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #caja {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute; /* Cambiado de relative a absolute */
+            }
+    </style>
+</head>
+<body>
+    <div class="contendeor">
+        <div id="caja"></div>
+    </div>
+    <script>
+        document.addEventListener('keydown', (event) => {
+            const caja = document.getElementById('caja');
+            let x = parseInt(caja.style.left) || 10;
+            let y = parseInt(caja.style.top) || 10;
+
+            switch (event.key) {
+                case 'ArrowUp':
+                    y -= 10;
+                    console.log("Arriba");
+                    break;
+                case 'ArrowDown':
+                    y += 10;
+                    console.log("Abajo");
+                    break;
+                case 'ArrowLeft':
+                console.log("Izquierda");
+                    x -= 10;
+                    break;
+                case 'ArrowRight':
+                console.log("Derecha");
+                    x += 10;
+                    break;
+            }
+
+            // Aplicar las nuevas coordenadas
+            caja.style.left = `${x}px`;
+            caja.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>

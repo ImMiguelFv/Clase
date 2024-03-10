@@ -1,0 +1,66 @@
+<!-- Ejercicio 4 Crea un programa que muestre en consola cuántos elementos p, a y span hay en una pieza de código HTML. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <style>
+        span{
+            color: #0000f8;
+        }
+        p{
+            color: #000000;
+        }
+        a{
+            color: #9c9cf8;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="codigoHTML">
+        <p>Este es un párrafo</p> 
+        <a href="#">Enlace</a> <br> <br>
+        <span>Este es un span</span>
+        <p>Otro párrafo</p>
+        <p>Otro párrafo</p>
+        <p>Otro párrafo</p>
+        <span>Este es otro un span</span>  <br> <br>
+        <!-- <a href="#">Otro Enlace</a> <br> <br>
+        <span>Este es otro un span</span> -->
+        </div>
+
+    <script>
+        // Obtiene la referencia del contenedor de código HTML
+        let codigoHTML = document.getElementById("codigoHTML");
+
+        // Contadores para los elementos
+        let contadorP = 0;
+        let contadorA = 0;
+        let contadorSpan = 0;
+
+        // Itera sobre los elementos hijos del contenedor
+        for (let i = 0; i < codigoHTML.children.length; i++) {
+            let elemento = codigoHTML.children[i];
+
+            // Incrementar el contador según el tipo de elemento
+            if (elemento.tagName === "P") {
+                contadorP++;
+            } else if (elemento.tagName === "A") {
+                contadorA++;
+            } else if (elemento.tagName === "SPAN") {
+                contadorSpan++;
+            }
+        }
+
+        // Mostrar resultados en la consola
+        console.log("Número de elementos <p>: " + contadorP); //Debe dar 4
+            console.log("Número de elementos <a>: " + contadorA); //Debe dar 2
+                console.log("Número de elementos <span>: " + contadorSpan); //Debe dar 3
+                    
+    </script>
+
+</body>
+</html>

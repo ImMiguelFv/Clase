@@ -1,0 +1,83 @@
+    <!-- ## Ejercicio 3
+    Escribe un programa que permita ordenar los elementos de una lista desordenada.
+    Cada elemento debe tener un aspa en su extremo derecho para poder ser eliminado.
+    Además, al final habrá un botón para añadir un elemento. El texto del nuevo elemento se le debe pedir al usuario por teclado. -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista Ordenada</title>
+    </head>
+    <body>
+        <div id="contenedor"></div>
+        <button onclick="agregarElemento()">Agregar Elemento</button>
+    
+        <script>
+            // Array para almacenar elementos de la lista
+            const lista = [];
+    
+            // Función para renderizar la lista en el contenedor
+            function renderizarLista() {
+                const contenedor = document.getElementById('contenedor');
+                contenedor.innerHTML = '';
+    
+                // Ordenar la lista alfanuméricamente
+                lista.sort((a, b) => {
+                    // Utilizar la función localeCompare para un orden correcto
+                    return a.toString().localeCompare(b.toString(), undefined, {numeric: true, sensitivity: 'base'});
+                });
+    
+                // Iterar sobre los elementos de la lista y agregarlos al contenedor
+                lista.forEach((elemento, index) => {
+                    const elementoDiv = document.createElement('div');
+                    const aspa = document.createElement('span');
+                    aspa.textContent = '\u2716';
+                    aspa.className = 'aspa';
+                    aspa.addEventListener('click', () => eliminarElemento(index));
+                    elementoDiv.textContent = elemento;
+                    elementoDiv.appendChild(aspa);
+                    contenedor.appendChild(elementoDiv);
+                });
+            }
+    
+            // Función para eliminar un elemento de la lista
+            function eliminarElemento(index) {
+                lista.splice(index, 1); // Elimina el elemento en la posición index
+                renderizarLista(); // Vuelve a renderizar la lista actualizada
+            }
+    
+            // Función para agregar un elemento a la lista
+            function agregarElemento() {
+                const nuevoElemento = prompt('Ingrese el nuevo elemento:');
+                if (nuevoElemento !== null) { // Si el usuario no cancela
+                    lista.push(nuevoElemento); // Agrega el nuevo elemento al final del array
+                    renderizarLista(); // Vuelve a renderizar la lista actualizada
+                }
+            }
+    
+            // Manejar eventos de teclado (ejemplo: presionar la tecla "A")
+            document.addEventListener('keydown', (event) => {
+                if (event.key === "a") {
+                    agregarElemento();
+                }
+            });
+    
+            // Inicializar la lista con algunos elementos de ejemplo
+            lista.push('Elemento 1', 'Elemento 11', 'Elemento 2', 'Elemento 3');
+    
+            // Renderizar la lista inicial
+            renderizarLista();
+        </script>
+    
+        <style>
+            .aspa {
+                cursor: pointer;
+                margin-left: 5px;
+                color: red;
+            }
+        </style>
+    </body>
+    </html>
+    

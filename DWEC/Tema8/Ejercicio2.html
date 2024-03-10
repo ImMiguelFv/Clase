@@ -1,0 +1,84 @@
+<!-- Ejercicio 2
+Escribe un módulo que facilite trabajar con la API de geolocalización.
+Incluye funciones askPermissions(), getLongitude(), getLatitude(), getAltitude()
+Importa el módulo a tu programa usando el espacio de nombres geo e invoca todas
+las funciones incluidas en el módulo para ejemplificar su uso
+-->
+<!-- Ejercicio 2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocalización</title>
+</head>
+<body>
+    <script>
+      // geoModule.js
+      const geoModule = (function () {
+        function askPermissions() {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              console.log('Permisos de geolocalización concedidos.');
+            },
+            (error) => {
+              console.error(`Error al obtener permisos de geolocalización: ${error.message}`);
+            }
+          );
+        }
+
+        function getLongitude() {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const longitude = position.coords.longitude;
+              console.log(`Longitud: ${longitude}`);
+            },
+            (error) => {
+              console.error(`Error al obtener la longitud: ${error.message}`);
+            }
+          );
+        }
+
+        function getLatitude() {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const latitude = position.coords.latitude;
+              console.log(`Latitud: ${latitude}`);
+            },
+            (error) => {
+              console.error(`Error al obtener la latitud: ${error.message}`);
+            }
+          );
+        }
+
+        function getAltitude() {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const altitude = position.coords.altitude;
+              console.log(`Altitud: ${altitude}`);
+            },
+            (error) => {
+              console.error(`Error al obtener la altitud: ${error.message}`);
+            }
+          );
+        }
+
+        return {
+          askPermissions,
+          getLongitude,
+          getLatitude,
+          getAltitude
+        };
+      })();
+
+      // Asigna el módulo a la variable geo
+      const geo = geoModule;
+
+      // Invoca las funciones del módulo
+      geo.askPermissions();
+      geo.getLongitude();
+      geo.getLatitude();
+      geo.getAltitude();
+    </script>
+</body>
+</html>

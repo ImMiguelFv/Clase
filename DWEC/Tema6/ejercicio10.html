@@ -1,0 +1,129 @@
+<!-- Desarrolla una aplicación web que funcione de alarma. 
+    Muestra la hora actual y pregunta al usuario a qué hora sonará. 
+    Una vez que llegue a la hora introducida por el usuario, debe preguntarle si quiere descansar un poco más y volver a mostrar el mensaje a los dos minutos.
+ -->
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 10</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    #horaActual {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    #alarmContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .disable {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="horaActual"></div>
+<div id="alarmContent" class="disable">
+  <label for="alarmTime">Hora:</label>
+  <input type="time" id="alarmTime" value="00:00" required>
+
+  <button id="setAlarmBtn">Configurar Alarma</button>
+</div>
+
+<script>
+  const alarmContent = document.getElementById("alarmContent");
+  let intervalId;
+
+  function actualizarReloj() {
+    const date = new Date();
+    const h = date.getHours().toString().padStart(2, '0');
+    const m = date.getMinutes().toString().padStart(2, '0');
+    const s = date.getSeconds().toString().padStart(2, '0');
+
+    const currentTimeElement = document.getElementById("horaActual");
+    currentTimeElement.innerHTML = `Hora actual: ${h}:${m}:${s}`;
+  }
+
+  setInterval(actualizarReloj, 1000); // Actualizar cada segundo
+
+  function configurarAlarma() {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+
+    const alarmTimeInput = document.getElementById("alarmTime");
+    const alarmTime = alarmTimeInput.value;
+
+
+    const date = new Date();
+    const currentHour = date.getHours().toString().padStart(2, '0');
+    const currentMinute = date.getMinutes().toString().padStart(2, '0');
+    const currentTime = parseInt(currentHour) * 60 + parseInt(currentMinute);
+
+    const [alarmHour, alarmMinute] = alarmTime.split(":");
+    const formattedAlarmTime = parseInt(alarmHour) * 60 + parseInt(alarmMinute);
+
+    const isAlarmSet = true;
+
+    intervalId = setInterval(function () {
+      const date = new Date();
+      const h = date.getHours().toString().padStart(2, '0');
+      const m = date.getMinutes().toString().padStart(2, '0');
+      const s = date.getSeconds().toString().padStart(2, '0');
+
+      const currentTimeElement = document.getElementById("horaActual");
+      currentTimeElement.innerHTML = `Hora actual: ${h}:${m}:${s}`;
+
+      const currentTime = parseInt(h) * 60 + parseInt(m);
+
+      if (formattedAlarmTime === currentTime && isAlarmSet) {
+        clearInterval(intervalId);
+
+        const despertar = confirm(`¡Es hora de despertar! ¿Quieres descansar un poco más?`);
+
+        if (despertar) {
+          // Llamar a la función postponer
+          postponer(formattedAlarmTime);
+        } else {
+          alert("¡Es hora de despertar!");
+          alarmContent.classList.toggle("disable");
+        }
+      }
+    }, 1000);
+    alert("¡Alarma creada!");
+    alarmContent.classList.toggle("disable");
+  }
+
+  function postponer(formattedAlarmTime) {
+    const postponeTime = 2 * 60 * 1000; // 2 minutos en milisegundos
+    const date = new Date();
+    date.setSeconds(0); // Resetear los segundos a 0
+    date.setMilliseconds(0); // Resetear los milisegundos a 0
+    date.setMinutes(date.getMinutes() + 2);
+
+    setTimeout(function () {
+      alert("¡A despertar!");
+      configurarAlarma(); // Configurar la alarma nuevamente después de 2 minutos
+    }, date.getTime() - new Date().getTime());
+  }
+
+  document.getElementById("setAlarmBtn").addEventListener("click", function() {
+    configurarAlarma();
+  });
+</script>
+
+</body>
+</html>
+

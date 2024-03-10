@@ -1,0 +1,134 @@
+/* Fuentes importadas */
+@font-face {
+    /* Fuente especial de navidada */
+    font-family: "navidad";
+    src: url("/Carpeta/fonts/heavenly_christmas/Heavenly\ Christmas\ -\ Personal\ Use.otf"  
+    );}
+/* Variables globales */
+    :root {
+    --darkRed: #7d1818;
+    --lightRed: #a82456;
+    --darkOrange: #be5905;
+    --lightOrange: #f2a03d;
+    --background: #fffaf4;
+}    
+/* Propiedades globales */
+*{
+    /* Indican desde donde se inicia */
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Propiedades del body */
+    body{
+    background-color: var(--background); /* Color del fondo */
+    font-size: 20px; /* Tamaño de la fuente predeterminado del body */
+    font-family: "Merriweather"; /* Fuente qué usa */
+    font-weight: lighter;   /* Tipo de la fuente */
+}
+/* Propiedades del header */
+    .cabecera {
+    display: flex; /* Disposición de los elementos */
+    justify-content: space-evenly; /* Como se alinean los elementos */
+    align-items: center; /* Desde donde se aliean */
+    height: 90px; /* Altura de la cabecera */
+    padding: 20 20px; /* Margenes interiores */
+    background-color: var(--darkRed); /* Color de fondo, */
+}    
+    /* Propiedades del logo */
+    .cabecera .logo {
+        cursor: pointer;
+        width: auto; /* Anchura */
+        vertical-align:middle ; /* Alineamiento */
+        padding-left: 20px; /*  */
+        
+    }
+    /* Propiedades de la imagen del logo */
+    .cabecera .logo img{
+        height: 70px; /* Tamaño de alto */
+    }
+    /* Propiedades de la barra de navegación y sus componentes */
+    .cabecera .nav_bar .nav-links{
+        list-style: none;         /* Elimina el punto de lista */
+        padding: 0 20px; /* Añade espaciado lateral */
+
+    }
+   
+    .cabecera .nav_bar .nav-links li{
+        display: inline-block;  /* Coloca los elementos en linea */
+        padding: 0 10px;  /* El margen de dentro del elemento */
+
+    }
+    
+    .cabecera .nav_bar .nav-links a {
+        text-decoration: none; /* Elimina el subrayado */
+        color: var(--background); /* Color de la fuente */
+        font-size: 20px; /* Tamaño de la fuente */
+    }
+    /* Cambia el tamaño al pasar el mouse */
+    .cabecera .nav_bar .nav-links li:hover {
+        transform: scale(1.2); /* Escala */
+        transition: (0.3); /* tiempo */
+    }
+    /* Cambia el color al pasar el mouse */
+    .cabecera .nav_bar .nav-links a:hover {
+        color: var(--lightOrange); /* Color al qué cambiará */
+    }
+    .cabecera .nav_bar .intercambio-navegacion {
+        font-size: 40px;
+        cursor: pointer;
+        color: var(--background);
+        background-color: transparent;
+        border: none;
+        padding: 0 10px;
+        display: none;
+    }
+    .cabecera .nav_bar .intercambio-navegacion:hover {
+        color: var(--lightOrange);
+        transform: scale(1.3);
+        transition: 0.3s;
+    }
+
+/* Estilos para móviles o dispositivos cuya pantalla es inferior a 768px */
+    @media screen and (max-width: 768px){
+        .cabecera {
+            display: flex; /* Disposición de los elementos */
+            justify-content: space-between; /* Como se alinean los elementos */
+            align-items: center; /* Desde donde se aliean */
+            height: 60px; /* Altura de la cabecera */
+            padding: 20 20px; /* Margenes interiores */
+            background-color: var(--darkRed); /* Color de fondo, */
+        }    
+        .cabecera .logo img{
+            height: 50px; /* Tamaño de alto */
+        }
+
+            .cabecera .nav_bar .intercambio-navegacion {
+                display: block;
+            }
+            .cabecera .nav_bar .nav-links li {
+                line-height: 40px;
+            }
+
+            
+            .cabecera .nav_bar .nav-links {
+                display: flex;
+                flex-direction: column;
+                background-color: var(--lightRed);
+                position: fixed;
+                top: -100%; /* Cambiado de 'top' a 'bottom' y valor a '-100%' */
+                left: 0;
+                width: 100%;
+                align-items: center;
+                padding: 20px 0;
+                transition: top 0.3s; /* Cambiado de 'left' a 'top' */
+            }
+        
+            .cabecera .nav_bar .nav-links--visible {
+                top: 60px; /* Cambiado de 'left' a 'top' y valor a '0' */
+            }
+        }
+            
+            
+        
+            

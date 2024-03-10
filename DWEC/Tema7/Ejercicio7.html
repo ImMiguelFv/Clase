@@ -1,0 +1,73 @@
+<!-- 
+## Ejercicio 7
+Escribe un programa para simular la velocidad de pulsación de 2 teclas.
+En pantalla aparecerán dos cajas, una verde y una roja, una debajo de otra. 
+El alto de cada caja será de 40 píxeles y el ancho inicial de 10 píxeles cada una. La primera caja incrementará su ancho 5 píxeles cada vez que se pulse la tecla [a].
+La segunda caja hará lo mismo cuando se pulse la tecla [ñ]. El juego termina cuando una de las cajas llega a 500 pixeles de ancho.
+En ese momento deben desactivarse los eventos de ambas teclas y mostrarse un mensaje bajo las cajas que contenga “Gana verde” o “Gana rojo”.
+-->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 7</title>
+        <style>
+            .caja {
+                height: 40px;
+                width: 10px;
+                margin-bottom: 10px;
+                transition: width 0.1s ease; /* Agregamos transición para un cambio suave de tamaño */
+            }
+    
+            #c1 {
+                background-color: green;
+            }
+    
+            #c2 {
+                background-color: red;
+            }
+    
+            #mensaje {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="c1" class="caja"></div>
+        <div id="c2" class="caja"></div>
+        <div id="mensaje"></div>
+    
+        <script>
+            const caja1 = document.getElementById('c1');
+            const caja2 = document.getElementById('c2');
+            const mensaje = document.getElementById('mensaje');
+    
+            document.addEventListener('keydown', handleKeydown);
+    
+            function handleKeydown(event) {
+                if (caja1.offsetWidth < 500 && (event.key === 'a' || event.key === 'A')) {
+                    caja1.style.width = `${caja1.offsetWidth + 5}px`;
+                }
+    
+                if (caja2.offsetWidth < 500 && (event.key === 'ñ' || event.key === 'Ñ')) {
+                    caja2.style.width = `${caja2.offsetWidth + 5}px`;
+                }
+    
+                if (caja1.offsetWidth >= 500 || caja2.offsetWidth >= 500) {
+                    document.removeEventListener('keydown', handleKeydown);
+                    mostrarMensaje();
+                }
+            }
+    
+            function mostrarMensaje() {
+                if (caja1.offsetWidth >= 500) {
+                    mensaje.textContent = "Gana verde";
+                } else {
+                    mensaje.textContent = "Gana rojo";
+                }
+            }
+        </script>
+    </body>
+    </html>
+    

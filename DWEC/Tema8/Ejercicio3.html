@@ -1,0 +1,59 @@
+<!-- Ejercicio 3
+Usa la API Canvas para dibujar en una página web el logotipo de Mitsubishi sobre un
+lienzo de 600 por 600 píxeles.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logotipo Mitsubishi</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mitsubishiCanvas" width="600" height="600"></canvas>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Obtén el contexto del lienzo
+            var canvas = document.getElementById("mitsubishiCanvas");
+            var context = canvas.getContext("2d");
+
+            // Configura el estilo de dibujo
+            context.strokeStyle = "#000";
+            context.lineWidth = 5;
+            context.fillStyle = "#FF0000";  // Color de relleno en rojo
+
+            // Dibuja los rombos
+            drawDiamond(300, 300, 180);   // Rombo superior
+            drawDiamond(129, 390, 241);  // Rombo inferior izquierdo
+            drawDiamond(471, 390, 119); // Rombo inferior derecho
+
+            function drawDiamond(x, y, angle) {
+                context.save();
+
+                // Traslada y rota el contexto
+                context.translate(x, y);
+                context.rotate((angle * Math.PI) / 180);
+
+                // Dibuja el rombo
+                context.beginPath();
+                context.moveTo(0, 0);
+                context.lineTo(50, 100);
+                context.lineTo(0, 200);
+                context.lineTo(-50, 100);
+                context.closePath();
+
+                // Rellena el rombo con el color especificado
+                context.fill();
+
+                context.restore();
+            }
+        });
+    </script>
+</body>
+</html>

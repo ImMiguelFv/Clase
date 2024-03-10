@@ -1,0 +1,125 @@
+/* Estilo de letras */
+@font-face {
+    font-family: "db";
+        src: url("../Fonts/dragon_ball_2/Dragon_Ball.otf");}
+        @font-face {
+        font-family: "Ketchup";                                                         
+        src: "../Fonts/ketchum/Ketchum.otf";}
+
+
+
+        /* Variables globales */
+            :root {
+            --darkRed: #7d1818;
+            --lightRed: #a82456;
+            --darkOrange: #be5905;
+            --lightOrange: #f3b870;
+            --background: #fffaf4;
+        }    
+/* Propiedades globales */
+        *{
+        margin: 0;
+        padding: 0;
+    }
+/* Propiedades del body */
+    body{
+        font-family: 'Ephesis', cursive;
+        font-weight: bolder;
+        background-color: var(--lightOrange);
+        color: #212F3C;
+        width: 100%;
+    }
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px; /* Altura */
+    padding: 5px;
+    background-color: var(--darkRed);
+}
+
+/* Propiedades del h1 (El título AnimeFreak) en el Header */
+.header h1 {
+    font-family: "db"; /* familia */
+    font-size: 25px; /* tamaño */
+    color: #fffaf4; /* color */
+    margin: 0; /* Añade margen cero para evitar espacios adicionales */
+}
+
+/* Modifica los elementos de la barra de navegación */
+.header .nav_bar {
+    width: 30%; /* Hace que ocupe un valor fijo */
+    display: flex;
+    justify-content: space-evenly; /* Distribuye los elementos en ambos lados */
+}
+
+/* Modificará los elementos link de la barra de navegación */
+.header .nav_bar .nav-links {
+    list-style: none; /* Modifica los puntos */
+}
+
+/* Distribuye los elementos de la barra de navegación */
+.header .nav_bar .nav-links li {
+    display: inline-block; /* Coloca los elementos en línea */
+    margin-left: 20px;  /* Añade margen entre los elementos */
+    padding: 0 5px;  /* Añade espaciado */
+}
+
+/* Modifica los links de la barra de navegación */
+.header .nav_bar .nav-links a {
+    text-decoration: none; /* Quita el subrayado */
+    color: var(--background); /* Color */
+    font-size: 15px; /* Tamaño */
+    font-family: "db"; /* FAMILIA */
+}
+
+/* Esto lo qué hace es aumentar el tamaño al pasar el cursor encima */
+.header .nav_bar .nav-links li:hover {
+    transform: scale(1.2); /* Escala */
+    transition: 0.3s; /* Tiempo en el que escalará */
+}
+
+/* Esto lo qué hace escambiar el color al pasar el cursor encima del link*/
+.header .nav_bar .nav-links a:hover {
+    color: var(--lightOrange); /* Del color qué pondra el cursor */
+}
+
+/* Propiedades de la la seccion productos*/
+
+/* Elemento titulo de la sección de productod */
+   #seeNews h2{
+        text-align: center; /* Donde situa */
+        padding: 20px 0; /* Espaciado */
+    }
+
+    /* Disposición de los productos */
+   #seeNews ul{
+        display: flex;         
+        justify-content: space-around;
+        list-style: none;
+    }
+    /* Ajustes a las imagenes de los productos */
+    #seeNews img {
+      width: 400px; /* Ancho */
+      height: 400px; /* Largo */
+      object-fit: cover; /* Ajuste de imagen */
+      border-radius: 10px; /* Esquinas */
+    }
+ /* Propiedades de los elementos nombre del producto */
+   #seeNews span {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+      align-items: center;
+    }
+    /* Propiedades del footer */
+    .pie{
+        margin-top: 20px; /* Distancia entre los elementos superiores y el footer */
+        padding: 20px; /* Espaciado internos */
+        background-color: var(--darkRed); /* Color de fondo */
+        color: white; /* Color de letras general */
+    }
+    .pie a{
+        color: var(--lightOrange);
+    }

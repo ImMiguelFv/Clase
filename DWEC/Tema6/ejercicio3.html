@@ -1,0 +1,50 @@
+<!-- Ejercicio 3 Elabora un programa que permite añadir filas a una tabla HTML. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+
+    <h2>Tabla de Datos</h2>
+
+    <!-- Tabla HTML -->
+    <table id="miTabla" border="1">
+        <tr>
+            <th>Lista de la compra</th>
+            
+        </tr>
+        
+        <!-- Puedes agregar más filas según sea necesario -->
+    </table>
+    <br>
+    <!-- Formulario para agregar fila -->
+    <form id="formulario">
+        <label for="nombre">Producto</label>
+        <input type="text" id="lista" name="lista" required>
+
+        <button type="button" onclick="agregarFila()">Añadir Fila</button>
+    </form>
+
+    <script>
+        function agregarFila() {
+            // Obtiene los valores del formulario
+            let nombre = document.getElementById("lista").value;
+            // Obtiene la referencia de la tabla
+            let tabla = document.getElementById("miTabla");
+            // Crear una nueva fila y celdas
+            let nuevaFila = tabla.insertRow(-1); // -1 para insertar al final
+            let celdaNombre = nuevaFila.insertCell(0);
+            // Agregar contenido a las celdas usando los valores del formulario
+            celdaNombre.innerHTML = nombre;
+            // Limpiar los campos del formulario
+            document.getElementById("nombre").value = ""; 
+            
+            
+        }
+    </script>
+
+</body>
+</html>

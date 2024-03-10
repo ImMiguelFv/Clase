@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Programa con Promesas</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <button id="ejecutarPromesas">Ejecutar Promesas</button>
+    <ul id="pasos"></ul>
+
+    <script>
+        function primeraAccion() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('Primera acción completada');
+                    resolve('Resultado de la primera acción');
+                }, 1000);
+            });
+        }
+
+        function segundaAccion(resultadoAccionAnterior) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('Segunda acción completada con resultado:', resultadoAccionAnterior);
+                    resolve('Resultado de la segunda acción');
+                }, 1000);
+            });
+        }
+
+        function terceraAccion(resultadoAccionAnterior) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('Tercera acción completada con resultado:', resultadoAccionAnterior);
+                    resolve('Resultado de la tercera acción');
+                }, 1000);
+            });
+        }
+        document.getElementById('ejecutarPromesas').addEventListener('click', ejecutarProgramaConPromesas);
+
+        function ejecutarProgramaConPromesas() {
+            const pasosElement = document.getElementById('pasos');
+            pasosElement.innerHTML = ''; // Limpiar la lista de pasos antes de cada ejecución
+
+            function agregarPaso(paso) {
+                const li = document.createElement('li');
+                li.textContent = paso;
+                pasosElement.appendChild(li);
+            }
+
+            primeraAccion()
+                .then(resultado => {
+                    agregarPaso('Paso 1: ' + resultado);
+                    return segundaAccion(resultado);
+                })
+                .then(resultado => {
+                    agregarPaso('Paso 2: ' + resultado);
+                    return terceraAccion(resultado);
+                })
+                .then(resultadoFinal => {
+                    agregarPaso('Paso 3: ' + resultadoFinal);
+                    console.log('Todas las acciones completadas. Resultado final:', resultadoFinal);
+                })
+                .catch(error => {
+                    console.error('Se produjo un error:', error);
+                    agregarPaso('Error: ' + error);
+                });
+        }
+
+    </script>
+</body>
+</html>

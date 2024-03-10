@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil de usuario de GitHub</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+  <h1>Consulta de usuario de GitHub</h1>
+  <label for="username">Nombre de usuario:</label>
+  <input type="text" id="username" placeholder="Ingrese el nombre de usuario de GitHub">
+  <button id="buscar">Consultar</button>
+</div>
+
+<div class="container">
+  <div class="profile">
+    <img id="avatar" src="" alt="Avatar">
+    <div class="ns">
+    <h1 id="username"></h1>
+    <p id="bio"></p>
+    <p id="location"></p>
+    <p id="repos"></p>
+    <p id="followers"></p>
+    <p id="following"></p>
+  </div> </div>
+  <div id="reposContainer" class="repos-container">
+    <h2>Repositorios</h2>
+    <ul id="reposList" class="repos-list"></ul>
+  </div>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>

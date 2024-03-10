@@ -1,0 +1,35 @@
+/*  Varible CSS globales*/
+:root{
+    --background :#fff;
+    --grisClaro: #a0a0a0;
+    --amarillo: #ff0;
+    --azul: #00f;
+    --gris333: #333;
+}
+/* Porpiedades Globales */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Header style */
+header{
+    background-color: var(--grisClaro);
+}
+
+/* Widget style class*/
+.widget{
+    border: 2px solid var(--gris333);
+}
+/* Contenido style class */
+.contenido h2{
+    color: var(--azul);
+}
+/* Contenido_destacado style class */
+.contenido_destacado p{
+    background-color: var(--amarillo);
+}
+/* Footer style */
+footer{
+    text-align: center;
+}

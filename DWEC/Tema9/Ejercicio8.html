@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="curriculum"></div>
+    <script>
+        fetch('cv.json')
+            .then(response => response.json())
+            .then(data => mostrarCurriculum(data))
+            .catch(error => console.error('Error al cargar el currículum:', error));
+
+        // Función para mostrar el currículum en HTML
+        function mostrarCurriculum(curriculum) {
+            var curriculumElement = document.getElementById('curriculum');
+            curriculumElement.innerHTML = `
+                <h2>${curriculum.nombre}</h2>
+                <p><strong>Email:</strong> ${curriculum.email}</p>
+                <p><strong>Teléfono:</strong> ${curriculum.telefono}</p>
+                <p><strong>Resumen:</strong> ${curriculum.resumen}</p>
+                <h3>Educación</h3>
+                <ul>
+                    ${curriculum.educacion.map(educacion => `
+                        <li>
+                            <strong>${educacion.titulo}</strong> en ${educacion.institucion}
+                            (${educacion.fecha})
+                        </li>`).join('')}
+                </ul>
+                <h3>Experiencia</h3>
+                <ul>
+                    ${curriculum.experiencia.map(experiencia => `
+                        <li>
+                            <strong>${experiencia.puesto}</strong> en ${experiencia.empresa}
+                            ${experiencia.fecha}: ${experiencia.descripcion}
+                        </li>`).join('')}
+                </ul>
+            `;
+        }
+    </script>
+</body>
+</html>

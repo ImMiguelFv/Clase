@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Información de Star Wars</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: space-around;
+    }
+    .column {
+        width: 30%;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .column h2 {
+        text-align: center;
+    }
+    .column ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .column li {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="column" id="personInfo">
+    <h2>Información de la persona 1</h2>
+    <ul id="personList">
+        <!-- La información de la persona se mostrará aquí -->
+    </ul>
+</div>
+
+<div class="column" id="planetInfo">
+    <h2>Información del planeta 1</h2>
+    <ul id="planetList">
+        <!-- La información del planeta se mostrará aquí -->
+    </ul>
+</div>
+
+<div class="column" id="starshipInfo">
+    <h2>Información de la nave 1</h2>
+    <ul id="starshipList">
+        <!-- La información de la nave se mostrará aquí -->
+    </ul>
+</div>
+
+<script>
+    // Función para realizar la petición a la API de Star Wars
+    function fetchData(url, callback) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => callback(data))
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    // Obtener la información de la persona 1
+    fetchData('https://swapi.dev/api/people/1/', function(data) {
+        const personList = document.getElementById('personList');
+        for (const key in data) {
+            if (typeof data[key] === 'object') {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${key}: `;
+                const subList = document.createElement('ul');
+                for (const subKey in data[key]) {
+                    const subListItem = document.createElement('li');
+                    subListItem.textContent = `${subKey}: ${data[key][subKey]}`;
+                    subList.appendChild(subListItem);
+                }
+                listItem.appendChild(subList);
+                personList.appendChild(listItem);
+            } else {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${key}: ${data[key]}`;
+                personList.appendChild(listItem);
+            }
+        }
+    });
+
+    // Obtener la información del planeta 1
+    fetchData('https://swapi.dev/api/planets/1/', function(data) {
+        const planetList = document.getElementById('planetList');
+        for (const key in data) {
+            if (typeof data[key] === 'object') {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${key}: `;
+                const subList = document.createElement('ul');
+                for (const subKey in data[key]) {
+                    const subListItem = document.createElement('li');
+                    subListItem.textContent = `${subKey}: ${data[key][subKey]}`;
+                    subList.appendChild(subListItem);
+                }
+                listItem.appendChild(subList);
+                planetList.appendChild(listItem);
+            } else {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${key}: ${data[key]}`;
+                planetList.appendChild(listItem);
+            }
+        }
+    });
+
+    // Obtener la información de la nave 1
+    fetchData('https://swapi.dev/api/starships/2/', function(data) {
+        const starshipList = document.getElementById('starshipList');
+        for (const key in data) {
+            if (typeof data[key] === 'object') {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${key}: `;
+                const subList = document.createElement('ul');
+                for (const subKey in data[key]) {
+                    const subListItem = document.createElement('li');
+                    subListItem.textContent = `${subKey}: ${data[key][subKey]}`;
+                    subList.appendChild(subListItem);
+                }
+                listItem.appendChild(subList);
+                starshipList.appendChild(listItem);
+            } else {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${key}: ${data[key]}`;
+                starshipList.appendChild(listItem);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

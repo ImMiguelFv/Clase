@@ -1,0 +1,21 @@
+{
+"nombre": "Miguel Angel Ferrón Viñuela",
+"email": "miguelfv2606@gmail.com",
+"telefono": "",
+"resumen": "Soy una programador web.",
+"educacion": [
+  {
+    "titulo": "Licenciatura en Desarrollo de Aplicaciones Web",
+    "institucion": "Virgen de la Paloma",
+    "fecha": "2021-2024"
+  }
+],
+"experiencia": [
+  {
+    "puesto": "Vago",
+    "empresa": "Mi casa",
+    "fecha": "Desde qué naci",
+    "descripcion": "Mi primera chamba?."
+  }
+]
+}

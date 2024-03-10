@@ -1,0 +1,69 @@
+<!-- Crea una cookie que almacene dos datos solicitados al usuario: su nombre y su edad. La cookie debe caducar en 30 minutos.
+ -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+
+    <script>
+        // Función para obtener y almacenar los datos del usuario en una cookie
+        function almacenarDatosUsuario() {
+            // Solicitar al usuario su nombre y edad
+            let nombre = prompt("Ingrese su nombre:");
+            let edad = prompt("Ingrese su edad:");
+
+            // Crear un objeto con los datos del usuario
+            let datosUsuario = {
+                nombre: nombre,
+                edad: edad
+            };
+
+            // Convertir el objeto a una cadena JSON
+            let datosUsuarioJSON = JSON.stringify(datosUsuario);
+            console.log(datosUsuario);
+            // Crear la cookie con los datos del usuario y establecer su caducidad en 30 minutos
+            document.cookie = `datosUsuario=${datosUsuarioJSON}; expires=${obtenerFechaCaducidad()}`;
+        }
+
+ // Función para obtener la fecha de caducidad en 30 minutos en la zona horaria de Madrid
+function obtenerFechaCaducidad() {
+    let fecha = new Date();
+    fecha.setTime(fecha.getTime() + (30 * 60 * 1000)); // 30 minutos en milisegundos
+
+    // Obtener la hora en formato local y especificar la zona horaria de Madrid
+    let horaCaducidad = fecha.toLocaleString('en-US', { timeZone: 'Europe/Madrid' });
+
+    return horaCaducidad;
+}
+        // Función para comprobar si la cookie existe y mostrar los datos almacenados
+        function comprobarCookie() {
+            // Obtener el valor de la cookie
+            let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)datosUsuario\s*=\s*([^;]*).*$)|^.*$/, "$1");
+
+            // Verificar si la cookie existe
+            if (cookieValue) {
+                // Convertir la cadena JSON de la cookie a un objeto
+                let datosUsuario = JSON.parse(cookieValue);
+
+                // Mostrar los datos almacenados
+                alert(`Cookie encontrada:\nNombre: ${datosUsuario.nombre}\nEdad: ${datosUsuario.edad}`);
+            } else {
+                // Mostrar un mensaje si la cookie no existe
+                alert("Cookie no encontrada");
+            }
+        }
+
+// Llamar a la función al cargar la página para comprobar la existencia de la cookie
+comprobarCookie();
+
+    </script>   
+
+    <!-- Botón para activar la función -->
+    <button onclick="almacenarDatosUsuario()">Almacenar Datos en Cookie</button>
+
+</body>
+</html>

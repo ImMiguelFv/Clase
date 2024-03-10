@@ -1,0 +1,105 @@
+<!-- ## Ejercicio 6
+Crea una aplicación que contenga un párrafo con mucho texto.
+Debajo del párrafo debe aparecer un botón por cada vocal. Al pulsar sobre una vocal, esa vocal desaparecerá del texto.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        #texto {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    </head>
+    <body>
+    <div id="texto">
+        <div id="contenido">
+        <h1>Ingredientes</h1>
+        <ul>
+            <li>150 g de harina de trigo de todo uso</li>
+            <li>2 huevos medianos</li>
+            <li>25 g de azúcar blanquilla (también vale panela)</li>
+            <li>50 g de mantequilla</li>
+            <li>200 ml. de leche entera</li>
+            <li>Unas gotas de esencia de vainilla</li>
+            <li>12 g de levadura en polvo (levadura química o polvo de hornear)</li>
+            <li>Una pizca de sal fina (2 gramos)</li>
+            <li>Para acompañar: Miel, jarabe de Arce, mantequilla, crema de chocolate, Nutella, Nocilla</li>
+        </ul>
+
+        <h1>Receta de Tortitas</h1>
+        <h2>Cómo hacer las tortitas</h2>
+        <ol>
+            <li>En un bol mezclamos los ingredientes secos, la harina, levadura, azúcar y sal. Reservamos.</li>
+            <li>Combinamos en otro bol los huevos batidos, la mantequilla derretida y la esencia de vainilla. Incorporamos los ingredientes secos y, con una varilla incorporamos a los líquidos.</li>
+            <li>Vertemos la leche y batimos, es muy importante que no batamos demasiado la mezcla. Se trata de integrarlos pero, no es necesario intentar eliminar todos los grumos. Si lo batimos en exceso los pancakes nos quedarán demasiado duros.</li>
+        </ol>
+
+        <h2>Preparación en la sartén</h2>
+        <ul>
+            <li>Calentamos una sartén (debe ser aquella que tengamos para que no se pegue las cosas, la de las tortillas o cosas a la plancha).</li>
+            <li>Cuando esté caliente añadimos un cucharón de la mezcla de las tortitas, comenzando a verterlo por el centro y dejando que sea la propia masa la que se redistribuya en la sartén. Es importante que regulemos la temperatura hacia arriba o hacia abajo durante todo el proceso.</li>
+            <li>Si la masa no se cuaja al añadirla a la sartén estará demasiado fría y si, por el contrario, la parte inferior se quema antes de que aparezcan burbujitas en la parte superior, estará demasiado caliente.</li>
+            <li>Cuando vemos que aparecen burbujas en la parte superior de la tortita es el momento de darle la vuelta con una espátula. Cocinamos el pancake por el otro lado durante 30 o 40 segundos y retiramos.</li>
+        </ul>
+
+        <h2>Presentación final y degustación</h2>
+        <p>
+            Podemos añadir a la masa una vez que la vertemos en la sartén algún tipo de frutas frescas, arándanos, frambuesas, serán perfectas como acompañamiento.
+            Servimos las tortitas unos encima de otros haciendo una torre, bañados con miel, una merienda de rechupete. Como alternativa podemos sustituir la miel por crema de cacao casera o aquella que más os guste, ¡buenísimas! Incluso pueden ir con un toque de fruta… arándanos, plátano, fresas, cerezas o frambuesas, por ejemplo.
+        </p>
+        </div>
+        </div>
+        <script>
+            const vocales = ['a', 'e', 'i', 'o', 'u'];
+        
+            function quitarVocal(vocal) {
+                const contenidoDiv = document.getElementById('contenido'); // Cambiado a 'contenido'
+                const contenido = contenidoDiv.innerHTML; // Utiliza innerHTML en lugar de textContent
+        
+                const nuevoContenido = contenido.replace(new RegExp(vocal, 'ig'), '');
+        
+                contenidoDiv.innerHTML = nuevoContenido; // Utiliza innerHTML en lugar de textContent
+            }
+        
+            vocales.forEach(vocal => {
+                const boton = document.createElement('button');
+                boton.textContent = vocal;
+                boton.addEventListener('click', () => quitarVocal(vocal));
+                document.body.appendChild(boton);
+            });
+        </script>
+        </body>
+        </html>
+        

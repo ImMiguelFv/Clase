@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bienvenido al curso de Diseño de interfaces web</h1>
+    <script>
+        var Hola = "mundo";
+        let viajero = "maldivas";
+        console.log(viajero);
+        console.log(Hola);
+        { //Prueba de que pasa con variable una global
+        var Hola = "juan";
+        let viajero = "japon";
+        console.log(viajero);
+        console.log(Hola)
+        ;}
+        //Observamos como el LET si puede cambiar
+        console.log(viajero);
+        console.log(Hola);
+        //Objetos
+        var hoteles = {
+            precio: 100,
+            ubicacion: "Maldivas"
+        }
+        console.log ("objeto: " + hoteles.precio +" " + hoteles.ubicacion);
+
+        let saludo = new String ("Alumnos Premiados");
+        let nombre = "Con invitar al profesor";
+        let premio = "Jose jamon"
+        console.log (saludo,nombre,premio)
+        console.log (
+       nombre.toLocaleLowerCase() ,
+        nombre.toUpperCase()
+        )
+        
+let vacaciones = `Sitio para vacaciones ${viajero}`;
+console.log(vacaciones)
+
+let mes = "Diciembre";
+function SalirViaje(){
+    console.log ("Enero");
+    console.log ("Febrero")
+    let mes = "marzo"
+    console.log(mes)
+}
+SalirViaje();
+
+function NosVamos(mes){
+    console.log (`Que ${mes} nos vamos`);
+    mes = "agosto";
+    console.log (`Que ${mes} volvemos`);
+    return mes;
+
+}
+mesVacaciones = NosVamos(mes);
+console.log (mesVacaciones)
+function QuienSoy ( miNombre ="Miguel", meVoy = "Maldivas"){
+    console.log( `Hola mi nombre es ${miNombre} y me voy a ${meVOy}`)
+}
+
+
+let Destinos = ["Maldivas", "Dubai", "Tokyo", "New York"]
+console.log(Destinos)
+console.log(`mi destino favorito es ${Destinos[2]}`)
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #101010;
+    color: #fff;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  
+  .profile h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .profile p {
+    margin-bottom: 5px;
+  }
+  
+  .repos-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #000;
+  }
+  
+  .repos-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .repos-list li {
+    margin-bottom: 5px;
+  }
+  
+  .repos-list li a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .repos-list li a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,53 @@
+<!-- Ejercicio 5
+Repasa las posibilidades de la API Notification y escribe una aplicación que notifique al
+usuario cada 30 segundos que debe visitar el enlace proporcionado por la propia
+notificación.
+Cada vez que aparezca una notificación, cerrarse automáticamente pasados 5
+segundos
+Una vez que visite el enlace, deben cesar las notificaciones -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones</title>
+</head>
+<body>
+
+<script>
+    // Función para mostrar la notificación
+    function mostrarNotificacion() {
+        // Verificar si las notificaciones están permitidas
+        if (Notification.permission === "granted") {
+            // Crear la notificación
+            var notificacion = new Notification("¡Visita el enlace!", {
+                body: "Haz clic en el enlace para obtener más información.",
+            });
+
+            // Cerrar automáticamente la notificación después de 5 segundos
+            setTimeout(function() {
+                notificacion.close();
+            }, 5000);
+
+            // Evento al hacer clic en la notificación
+            notificacion.onclick = function() {
+                // Abrir el enlace en una nueva ventana o pestaña
+                window.open("index.html", '_blank');
+                
+                // Cerrar la notificación manualmente
+                notificacion.close();
+            };
+        }
+    }
+
+    // Pedir permiso para mostrar notificaciones
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+
+    // Mostrar la notificación cada 30 segundos
+    setInterval(mostrarNotificacion, 30000);
+</script>
+
+</body>
+</html>

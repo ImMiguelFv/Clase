@@ -1,0 +1,27 @@
+/* Header */
+.main-header {
+    background-color: #398383;
+    color: #000000;
+    display: flex;
+    flex-direction:row-reverse;
+    justify-content: space-between;
+    width: auto;
+}
+.main .logo {
+    cursor: pointer;
+    width: auto;
+    vertical-align:middle ;
+    
+}
+.main-header .logo img {
+    margin-top: 5px;
+    margin: 25px ;
+    height: 8em;
+}
+
+/* general */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

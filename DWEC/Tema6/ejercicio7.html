@@ -1,0 +1,60 @@
+<!-- Elabora un programa que solicite al usuario el número de filas y columnas, y genere esa tabla rellena con números aleatorios. 
+    Finalmente, el programa debe recorrer la tabla y mostrar en consola cuántas filas y columnas ha detectado. -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 7</title>
+    </head>
+    <body>
+    
+        <script>
+            // Función para generar la tabla y contar filas y columnas
+            function generarTabla() {
+                // Solicitar al usuario el número de filas y columnas
+                let numFilas = prompt("Ingrese el número de filas:");
+                let numColumnas = prompt("Ingrese el número de columnas:");
+    
+                // Verificar si los números son válidos
+                if (isNaN(numFilas) || isNaN(numColumnas) || numFilas <= 0 || numColumnas <= 0) {
+                    console.log("Por favor, ingrese números válidos y mayores que cero.");
+                    return;
+                }
+    
+                // Convertir a números enteros
+                numFilas = parseInt(numFilas);
+                numColumnas = parseInt(numColumnas);
+    
+                // Obtener la referencia del cuerpo de la tabla
+                let cuerpoTabla = document.getElementById("cuerpoTabla");
+    
+                // Generar la tabla con números aleatorios
+                for (let i = 0; i < numFilas; i++) {
+                    // Crear una nueva fila
+                    let fila = cuerpoTabla.insertRow();
+    
+                    for (let j = 0; j < numColumnas; j++) {
+                        // Crear una celda y asignar un número aleatorio
+                        let celda = fila.insertCell();
+                        celda.textContent = Math.floor(Math.random() * 100); // Números aleatorios del 0 al 99
+                    }
+                }
+    
+                // Mostrar en la consola cuántas filas y columnas se han detectado
+                console.log("Filas detectadas: " + cuerpoTabla.rows.length);
+                console.log("Columnas detectadas: " + cuerpoTabla.rows[0].cells.length);
+            }
+    
+            // Llamar a la función al cargar la página
+            window.onload = generarTabla;
+        </script>
+    
+        <!-- Tabla para mostrar los números aleatorios -->
+        <table border="1">
+            <tbody id="cuerpoTabla"></tbody>
+        </table>
+    
+    </body>
+    </html>
+    

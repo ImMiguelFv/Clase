@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <script>
+        // Crear un array llamado "MejorHotel" con algunos hoteles
+        var MejorHotel = ["Hilton", "the Peninsula"];
+
+        // Mostrar la lista oficial por consola
+        console.log("Lista Oficial de Hoteles:", MejorHotel);
+
+        // Añadir dos hoteles al array
+        MejorHotel.push("The Baratillo", "The Palm");
+
+        // Comprobar el número total de hoteles y mostrarlo por consola
+        console.log("Número total de hoteles en la lista:", MejorHotel.length);
+
+        // Mostrar la lista oficial actualizada por consola
+        console.log("Lista Oficial de Hoteles (Actualizada):", MejorHotel);
+
+        // Eliminar el hotel "The Baratillo" de la lista
+      MejorHotel.pop("The Baratillo")
+        // Mostrar la lista oficial actualizada después de la eliminación
+        console.log("Lista Oficial de Hoteles (Después de la Eliminación):", MejorHotel);
+
+        // Elegir al mejor hotel y mostrarlo por consola
+        var mejorHotel = MejorHotel[0];
+        console.log("El Mejor Hotel es:", mejorHotel);
+    </script>
+</body>
+</html>

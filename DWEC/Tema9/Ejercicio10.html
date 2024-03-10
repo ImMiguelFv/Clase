@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <style>
+    #productos{
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+    }
+    img{
+      width: 120px;
+      height: auto;
+    }
+    .producto{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid black;
+    }
+  </style>
+  <title>Tienda de café</title>
+</head>
+<body>
+  <div id="productos">
+    <div class="producto">
+      <h2>Producto 1</h2>
+      <p>Descripción 1</p>
+      <p>€10</p>
+    </div>
+    <div class="producto">
+      <h2>Producto 2</h2>
+      <p>Descripción 2</p>
+      <p>€15</p>
+    </div>
+    <div class="producto">
+      <h2>Producto 3</h2>
+      <p>Descripción 3</p>
+      <p>€20</p>
+    </div>
+    <div class="producto">
+      <h2>Producto 4</h2>
+      <p>Descripción 4</p>
+      <p>€25</p>
+    </div>
+    <div class="producto">
+      <h2>Producto 5</h2>
+      <p>Descripción 5</p>
+      <p>€30</p>
+    </div>
+    <div class="producto">
+      <h2>Producto 6</h2>
+      <p>Descripción 6</p>
+      <p>€35</p>
+    </div>
+    <div class="producto">
+      <h2>Producto 7</h2>
+      <p>Descripción 7</p>
+      <p>€40</p>
+    </div>
+    <div class="producto">
+      <h2>Producto 8</h2>
+      <p>Descripción 8</p>
+      <p>€45</p>
+    </div>
+    <div class="producto">
+      <h2>Producto 9</h2>
+      <p>Descripción 9</p>
+      <p>€50</p>
+    </div>
+  </div>
+  <script>
+    const productos = document.querySelectorAll(".producto");
+
+    // Función para realizar una petición a la API de Coffee
+    function getImage(index) {
+      // Obtenemos la URL de la imagen aleatoria
+      const url = "https://coffee.alexflipnote.dev/random.json";
+
+      // Realizamos la petición
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          // Obtenemos la URL de la imagen
+          const imageUrl = data.file;
+
+          // Creamos un elemento de imagen
+          const imagen = document.createElement("img");
+          imagen.setAttribute("src", imageUrl);
+
+          // Añadimos la imagen al producto actual
+          productos[index].appendChild(imagen);
+        });
+    }
+
+    // Ejecutamos la función para cada producto al cargar el DOM
+    document.addEventListener("DOMContentLoaded", () => {
+      productos.forEach((producto, index) => {
+        getImage(index);
+      });
+    });
+  </script>
+</body>
+</html>
+

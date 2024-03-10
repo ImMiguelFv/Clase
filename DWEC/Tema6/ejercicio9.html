@@ -1,0 +1,57 @@
+<!-- Crea una lista desordenada con 10 elementos. Luego pregunta al usuario si la quiere ordenar. 
+Si pulsa aceptar, la lista debe ordenarse alfabéticamente; si pulsa cancelar, la lista debe desordenarse aleatoriamente.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+
+    <h2>Lista Desordenada</h2>
+
+    <!-- Lista desordenada con 10 elementos -->
+    <ul id="miLista">
+        <li>Miguel</li>
+        <li>Sergio</li>
+        <li>Selena</li>
+        <li>Ana</li>
+        <li>Pablo</li>
+        <li>Paula</li>
+        <li>Jose</li>
+        <li>Jorge</li>
+        <li>Maria</li>
+        <li>Mario</li>
+    </ul>
+
+    <script>
+        // Obtener la referencia de la lista
+        let miLista = document.getElementById("miLista");
+
+        // Preguntar al usuario si desea ordenar la lista
+        let ordenarLista = confirm("¿Desea ordenar la lista alfabéticamente?");
+
+        // Obtener los elementos de la lista
+        let elementosLista = Array.from(miLista.children);
+
+        // Ordenar o desordenar la lista según la elección del usuario
+        if (ordenarLista) {
+            // Ordenar alfabéticamente
+            elementosLista.sort((a, b) => a.textContent.localeCompare(b.textContent));
+        } else {
+            // Desordenar aleatoriamente
+            elementosLista.sort(() => Math.random() - 0.5);
+        }
+
+        // Limpiar la lista actual
+        miLista.innerHTML = "";
+
+        // Agregar los elementos ordenados o desordenados
+        elementosLista.forEach(elemento => {
+            miLista.appendChild(elemento);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+/* Fuentes */
+@font-face {
+  font-family: "logo";
+  src: url(../fonts/one_piece/ONE\ PIECE.ttf); /* Definición de la fuente 'logo' */
+}
+
+@font-face {
+  font-family: "like";
+  src: url(../fonts/widges/Widges-Demo.ttf); /* Definición de la fuente 'like' */
+}
+
+@font-face {
+  font-family: "xeno";
+  src: url(../foonts/Xeno/Xenogears_font.ttf); /* Definición de la fuente 'xeno' */
+}
+
+@font-face {
+  font-family: 'Designer';
+  src: url('../fonts/nexa/Nexa-Heavy.ttf') format('opentype');
+}
+
+/* Variables globales */
+:root {
+  /* Definición de colores personalizables */
+  --darkRed: hsla(0, 0%, 100%, 0);
+  --lightRed: #ffffff;
+  --darkOrange: #be5905;
+  --lightOrange: #00ffb3;
+  --background: #ececec; /* Color de fondo general */
+  --coral: #FF6347; 
+  --grisclaro: #dfdddd;
+  --tres: #333333;
+  --azul: #000000; /* Color de texto predeterminado para los títulos de sección */
+  --azuloscuro: #000000; 
+  --gris: rgb(185, 184, 184); 
+  --grisaceo: #d8d8d8; 
+  --amarillo: #ffef5b; /* Color de acento para elementos destacados */
+  --azulbrillante: #000000;
+  --rojo: #c70909; /* Color rojo utilizado en algunas secciones */
+  --darkRed: hsl(0, 100%, 12%);
+}
+
+/* Propiedades globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fotocomida{
+  text-align: center;
+}
+
+/* Body */
+body {
+  background-color: var(--background); /* Color de fondo para el cuerpo */
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  display: grid; /* Utilizamos grid para la estructura general del cuerpo */
+  grid-template-rows:auto 1fr auto;
+  font-family: Designer;
+  font-weight: lighter;
+}
+
+/* Valores generales */
+/* Valores predefinidos para las imágenes */
+img {
+  /* Estilo predefinido para las imágenes */
+  width: 88%; /* Ancho máximo del 88% para las imágenes */
+  height: 300px; /* Altura fija de 300px */
+  object-fit: cover; /* Escalado de la imagen para cubrir su contenedor */
+  object-position: bottom; /* Posición de la imagen centrada en la parte inferior */
+}
+
+img:hover {
+  /* Efecto hover para las imágenes */
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.201); /* Sutil sombra al hacer hover */
+  transform: scale(1.8); /* Escalado al hacer hover para un efecto de zoom */
+  -webkit-transform: scale(1.8);
+  -moz-transform: scale(1.8);
+  -ms-transform: scale(1.8);
+  -o-transform: scale(1.8);
+}
+
+/* Diseño predefinido para los enlaces */
+a{
+  text-decoration: none;
+  color: black; /* Color de texto predeterminado para enlaces */
+  cursor: pointer;
+}
+
+/* Titulos de las secciones */
+h2 {
+  /* Estilo para los títulos de sección */
+  font-size: 24px; /* Tamaño de fuente de los títulos de sección */
+  color: var(--azul); /* Color del texto de los títulos de sección */
+  margin-bottom: 10px; /* Espaciado inferior a los títulos de sección */
+  text-align: center;
+}
+
+.titulosection{
+  font-size: 36px; /* Tamaño de fuente para títulos de sección más grandes */
+}
+
+/* Botón para desplazarse hacia arriba */
+#scrollToTopBtn {
+  /* Estilo para el botón de scroll hacia arriba */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  border-radius: 25px;
+  background-color: black;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 50px;
+  width: 50px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+/* Estilo para las etiquetas de filtro */
+.form-group {
+  /* Estilo para el grupo de filtros */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px; /* Ajusta el espacio entre las filas según sea necesario */
+}
+
+label {
+  /* Estilo para las etiquetas de filtro */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Estilo para los selectores de filtro */
+select {
+  /* Estilo para los selectores de filtro */
+  padding: 8px; /* Relleno interior de 8px */
+  border: 1px solid var(--gris); /* Borde de 1px sólido con color gris */
+  border-radius: 5px; /* Bordes redondeados de 5px */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Sutil sombra interna */
+  font-size: 14px; /* Tamaño de fuente de 14px */
+}
+
+/* Estilo para las opciones de los selectores */
+select option {
+  font-size: 14px; /* Tamaño de fuente de las opciones de selector */
+}
+
+/* Contenido Principal */
+
+/* Main  */
+.content{
+  /* Estilo para el contenido principal */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Recetas destacadas */
+.recetas-destacadas {
+  /* Estilo para la sección de recetas destacadas */
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  margin-top: 20px; /* Margen superior de 20px */
+}
+
+/* Receta top */
+.destacada-mes{
+  /* Estilo para la receta destacada del mes */
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+}
+
+.receta-top {
+  /* Estilo para la receta top */
+  margin: auto ;
+  width: 70rem; /* Ancho máximo de 70rem para la receta top */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--rojo);
+}
+
+/* Estilo del titulo de la receta top */
+.receta-top h2 {
+  text-align: center;
+  padding: 25px 40px;
+  font-size: 32px; /* Tamaño de fuente para el título de la receta top */
+  color: var(--amarillo); /* Color amarillo para el título de la receta top */
+}
+
+/* Estilo del enlace de la receta top */
+.receta-top a {
+  text-align: center;
+  padding: 25px 40px;
+  font-size: 32px; /* Tamaño de fuente para el enlace de la receta top */
+  color: var(--amarillo); /* Color amarillo para el enlace de la receta top */
+}
+
+.receta-top a:hover {
+  font-size: 34px; /* Tamaño de fuente al hacer hover en el enlace de la receta top */
+}
+
+/* Estilo de la imagen top */
+.receta-top img {
+  width: 100%; /* Ancho del 100% para la imagen top */
+  height: auto;
+}
+
+
+
+/* Estilo del enlace de la receta top */
+.receta-top a {
+  text-align: center;
+  padding: 25px 40px;
+}
+
+/* Las otras recetas top */
+.otras-destacadas {
+  /* Estilo para las otras recetas destacadas */
+  margin-top: 40px; /* Margen superior de 40px */
+}
+
+.otras-destacadas .recetas {
+  /* Estilo para el contenedor de las otras recetas destacadas */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.otras-destacadas .recetas .receta { 
+  /* Estilo para cada receta dentro de las otras destacadas */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding:40px 40px;
+  text-align: center;
+}
+
+/* Novedades */
+.novedades .recetas {
+  /* Estilo para la sección de novedades */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.novedades .recetas .receta { 
+  /* Estilo para cada receta dentro de las novedades */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  flex-wrap: wrap;
+  padding:40px 40px;
+}
+
+/* Recetas Clasificadas */
+.clasificadas-container .recetas {
+  /* Estilo para la sección de recetas clasificadas */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.recetas-clasificadas .recetas .receta { 
+  /* Estilo para cada receta dentro de las clasificadas */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.sin-resultados {
+  /* Estilo para la sección de resultados vacíos */
+  text-align: center;
+  width: 100%; /* Ancho del 100% */
+  padding: 20px;
+  margin-bottom: 20px; /* Margen inferior de 20px para separar de las recetas */
+  grid-column: 2;
+}
+
+.sin-resultados p {
+  margin-bottom: 10px;
+}
+
+.sin-resultados img {
+  /* Estilo para la imagen en resultados vacíos */
+  max-width: 100%;
+  height: auto;
+}
+
+.sin-resultados img:hover {
+  /* Efecto hover en la imagen de resultados vacíos */
+  transform: none;
+  box-shadow: none !important;
+}
+
+
+
+/* Zona de consulta multimedia */
+@media (max-width: 1080px){
+  /* Ajustes de diseño para dispositivos con ancho máximo de 1080px */
+  .otras-destacadas .recetas {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .novedades .recetas {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .clasificadas-container .recetas {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+  }
+  .form-group {
+    /* Ajustes de diseño para el grupo de filtros */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+  } 
+}
+
+@media (max-width: 768px) {
+  /* Ajustes de diseño para dispositivos con ancho máximo de 768px */
+  .form-group {
+    /* Ajustes de diseño para el grupo de filtros */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  /* Contenido Principal */
+  /* Main  */
+  .content {
+    /* Ajustes de diseño para el contenido principal */
+    margin-top: 80px;
+    display: grid; /* Aplicamos un display grid para que siempre se mantenga responsive */
+    grid-template-rows: repeat(3, auto);
+  }
+  /* Recetas destacadas */
+  .recetas-destacadas {
+    /* Ajustes de diseño para la sección de recetas destacadas */
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    justify-content: center;
+    align-items:center;
+  }
+  /* Receta top */
+  .receta-top {
+    /* Ajustes de diseño para la receta top */
+    margin: auto;
+    width: 100%;
+    height: auto;
+    padding: none;
+  }
+  /* Estilo de la imagen top */
+  .receta-top img {
+    width: 100%;
+    height: auto;
+    padding: 10px 10px;
+  }
+  /* Otras recetas top */
+  .otras-destacadas .recetas {
+    /* Ajustes de diseño para las otras recetas destacadas */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .otras-destacadas .recetas .receta { 
+    /* Ajustes de diseño para cada receta dentro de las otras destacadas */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding:0 0;
+  }
+  /* Novedades */
+  .novedades .recetas {
+    /* Ajustes de diseño para la sección de novedades */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .novedades .recetas .receta { 
+    /* Ajustes de diseño para cada receta dentro de las novedades */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding:40px 40px;
+  }
+  /* Recetas Clasificadas */
+  .clasificadas-container .recetas {
+    /* Ajustes de diseño para la sección de recetas clasificadas */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Animando imagenes y hovers generales*/
+@keyframes show { /* Nombramos a la animación */
+  from {
+    opacity: 0;
+    /*cuantoseveralaimagenalinicio*/transform: scale(0.15);
+    /*suescala*/-moz-transform: scale(0.15);
+    -ms-transform: scale(0.15);
+    -o-transform: scale(0.15);
+    -webkit-transform: scale(0.15);
+    -moz-transform: scale(0.15);
+}
+
+  to {
+    opacity: 1; /* cuanto se verá al final */
+    transform: scale(1);/* y su escala final */
+  }
+}
+img{ view-timeline-name:--image;
+  view-timeline-axis: block;
+  animation-timeline: --image;
+  animation-name:show;
+  animation-range: entry 25% cover 30%;
+  animation-fill-mode:both;
+}
+
+  

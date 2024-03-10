@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concurso de Nombres - Callback Hell</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        section {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        h3 {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>5 concursantes pero solo 1 puede ganar y sus nombres son</h2>
+        <h3 id="result"></h3>
+    </section>
+
+    <script>
+            // Simulación de funciones asincrónicas con callbacks
+            function tarea1(callback) {
+            setTimeout(function() {
+                console.log("Tarea 1 completada");
+                document.getElementById("result").innerHTML = "Juan"
+                callback();
+            }, 1000);
+            }
+
+            function tarea2(callback) {
+            setTimeout(function() {
+                console.log("Tarea 2 completada");
+                document.getElementById("result").innerHTML = "Pepe"
+                callback();
+            }, 1000);
+            }
+
+            function tarea3(callback) {
+            setTimeout(function() {
+                console.log("Tarea 3 completada");
+                document.getElementById("result").innerHTML = "Maria"
+                callback();
+            }, 1000);
+            }
+
+            // Uso de callback hell
+            tarea1(function() {
+            tarea2(function() {
+                tarea3(function() {
+                console.log("Todas las tareas completadas");
+            });
+        });
+    });
+    document.getElementById("result").innerHTML = "¿Quién será el vencedor?"
+
+    </script>
+</body>
+</html>

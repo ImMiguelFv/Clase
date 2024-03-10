@@ -1,0 +1,77 @@
+<!-- ## Ejercicio 5
+Crea una rutina que no permita que el ratón se coloque encima de una caja azul de cien por cien pixeles.
+Cada vez que el ratón intente colocarse encima, la posición de la caja debe cambiar aleatoriamente por la página. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #caja {
+            position: absolute; /* Asegura que 'left' y 'top' funcionen correctamente */
+            width: 40px; /* Ancho de la caja */
+            height: 40px; /* Alto de la caja */
+            border: 2px solid blue; /* Borde blanco para visualizar mejor la caja */
+            background-color: blue;
+            overflow: hidden; /* Evita que la imagen se desborde de la caja */
+        }
+
+        #caja img {
+            width: 100%; /* Hace que la imagen ocupe el 100% del ancho de la caja */
+            height: 100%; /* Hace que la imagen ocupe el 100% del alto de la caja */
+        }
+    </style>
+</head>
+<body>
+    <div id="caja">
+        <img src="297524.svg" alt="">
+    </div>
+
+    <script>
+        // Obtener la referencia a la caja azul
+        const caja = document.getElementById('caja');
+
+        // Función para generar una posición aleatoria en la página
+        function generarPosicionAleatoria() {
+            const anchoPagina = window.innerWidth;
+            const altoPagina = window.innerHeight;
+            const anchoCaja = caja.offsetWidth;
+            const altoCaja = caja.offsetHeight;
+
+            // Calcular posición aleatoria dentro de la página
+            const posicionX = Math.floor(Math.random() * (anchoPagina - anchoCaja));
+            const posicionY = Math.floor(Math.random() * (altoPagina - altoCaja));
+
+            return { x: posicionX, y: posicionY };
+        }
+
+        // Función para verificar si el ratón está encima de la caja
+        function verificarPosicion(event) {
+            // Obtener las posiciones de la caja y del ratón
+            const posicionCaja = caja.getBoundingClientRect();
+            const posicionRaton = {
+                x: event.clientX,
+                y: event.clientY
+            };
+
+            // Verificar si el ratón está sobre la caja
+            if (
+                posicionRaton.x >= posicionCaja.left &&
+                posicionRaton.x <= posicionCaja.right &&
+                posicionRaton.y >= posicionCaja.top &&
+                posicionRaton.y <= posicionCaja.bottom
+            ) {
+                // Cambiar la posición de la caja a una posición aleatoria
+                const nuevaPosicion = generarPosicionAleatoria();
+                caja.style.left = nuevaPosicion.x + 'px';
+                caja.style.top = nuevaPosicion.y + 'px';
+                console.log("Casi me pillas");
+            }
+        }
+
+        // Agregar el evento al ratón para verificar la posición
+        document.addEventListener('mousemove', verificarPosicion);
+    </script>
+</body>
+</html>

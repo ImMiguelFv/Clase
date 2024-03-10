@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contenedor{
+            display: grid;
+            grid-template-areas:
+            "cabecera cabecera cabecera cabecera"
+            "cuerpo cuerpo . lateral"
+            "cuerpo cuerpo . lateral"
+            "pie pie pie pie";
+            grid-template-rows: repeat(4, 100px);
+        }
+        .lateral{
+            grid-area: lateral;
+            background-color: orangered;
+        } .cabecera{
+            grid-area: cabecera;
+            background-color: orange;
+        } .cuerpo{
+            grid-area: cuerpo;
+            background-color: cornflowerblue;
+        } .pie{
+            grid-area: pie;
+            background-color: yellowgreen   ;
+        }
+        .aniadido{
+            grid-area: 3 / 2 / 4 / 4;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="cabecera">header</div>
+        <div class="cuerpo">  cuerpo </div>
+        <div class="lateral"> lateral  </div>
+        <div class="pie" > pie  </div>
+        <div class="aniadido"></div>
+
+    </div>
+</body>
+</html>

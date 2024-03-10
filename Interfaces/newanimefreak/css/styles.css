@@ -1,0 +1,540 @@
+@font-face {
+    font-family: 'Grinched';
+    src: url('../font/GrinchedRegular.otf') format('opentype');
+ 
+}
+@font-face {
+
+    font-family: 'Creato';
+    src: url('../font/creato.otf') format('opentype');
+
+}
+@font-face {
+
+    font-family: 'Anton';
+    src: url('../font/Anton-Regular.ttf') format('opentype');
+
+}
+:root{
+    --cabecera: transparent;
+    --background: #081305;
+    --colorfuente:#212F3C;
+    --colorlogo:  #43e622 ;
+    --textWhite: #fff;
+    --textOrange: #a9f871;
+    --fondoitem: #496a21;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Creato', cursive;
+    font-size: 20px;
+    color: var(--colorfuente);
+    background-color: var(--background);
+   
+}
+
+h2{
+    text-align: center;
+    padding: 20px 0;
+}
+
+/*  HEADER **************************************/
+.cabecera{
+    display: flex;
+    justify-content: space-around;
+    height: 90px;
+    align-items: center;
+    background-color: var(--cabecera) ;
+}
+
+.mainMenu{
+    display: flex;
+    align-items: center;
+}
+.mainMenu .nav-links li a{
+    text-decoration: none;
+    padding: 20px;
+    color: var(--textOrange);
+}
+.mainMenu .nav-links li:hover{
+    transform: scale(1.2);
+    transition: 0.3s; 
+}
+.mainMenu .nav-links li a:hover{
+    color: white;
+    text-shadow: 2px 2px 4px #71f871; 
+}
+.logo{
+   
+    font-family: 'Grinched', sans-serif;
+    letter-spacing: 3px;
+    font-size: 40px; 
+    color: var(--colorlogo);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+.cabecera .mainMenu .btn-mainMenu{
+    
+    font-size: 40px;  
+    cursor: pointer; 
+    color: var(--textOrange); 
+    background-color: transparent; 
+    border: none; 
+    padding: 0 15px; 
+    display: none; 
+}
+.cabecera .mainMenu .btn-mainMenu:hover{
+    color: var(--colorlogo);
+    transform: scale(1.3);
+    transition: 0.3s;
+}
+.cabecera .mainMenu ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+/*  FIN HEADER  *************************************/
+
+
+/*  CUERPO PÁGINA  *************************************/
+.cuerpo{
+    display: grid;
+    grid-template-areas: 
+    "noticias"
+    "animes"
+    "comunidad";
+}
+
+.noticias{
+    display: grid;
+    grid-template-rows: minmax(100px, 450px) minmax(100px,450px);
+}
+.titular{
+display: grid;
+grid-template-columns: 50% 50%;
+}
+
+.titular .fondotitular{
+    grid-area: 1/1/2/3;
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+}
+
+.titular .txtTitular{
+    grid-area: 1/1/2/2;
+    color: var(--textWhite);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    align-self: center; /* Añade esta línea para centrar verticalmente */
+}
+.titular .txtTitular h1{
+  font-size: 50px;
+  font-family: 'Anton';
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.titular .txtTitular h2{
+   color: var(--textOrange);
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+.titular .txtTitular p{
+    font-size: 30px;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.titular .btnTitular{
+    font-size: 20px;
+    cursor: pointer;
+    background-color: var(--textOrange);
+    color: var(--colorfuente);
+    border: 2px solid;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom, #c5f65b, #e2f6ae);
+}
+.titular .btnTitular:hover{
+    background-color: var(--textOrange);
+    color: var(--background);
+    background-image: none  
+;}
+/* NOTICIAS ACTUALIDAD *********************************** */
+
+.notiActualidad{
+    display: grid;
+    grid-template-columns:550px 550px 550px;
+    grid-template-rows: 420px;
+    gap: 80px;
+    padding: 30px 20px;
+    margin: auto;
+}
+
+.notiActualidad .noticia{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    flex: 1;
+    border-radius: 7px;
+    align-items: center;
+    text-align: center;
+    background-image: linear-gradient(to top, #64902e, #0b1607);
+
+}
+.notiActualidad .noticia:hover{
+    box-shadow: 2px 2px 15px 10px rgba(170, 224, 137, 0.5);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.notiActualidad .noticia .imgNoticia{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.5);
+    border-radius: 5px;
+    
+}
+.notiActualidad .noticia .imgNoticia:hover{
+    width: 90%;
+    object-fit:cover;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    box-shadow: 2px 2px 15px 10px rgba(170, 224, 137, 0.5);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.notiActualidad .noticia h1{
+    color: var(--textOrange);
+    font-weight: bolder;
+    padding: 10px 0;
+    font-size: 25px;
+
+}
+
+.notiActualidad .noticia h2{
+    color: var(--textWhite);
+    font-family: "Anton", sans-serif;
+    font-size: 30px;
+    padding: 10px 0;
+}
+
+.notiActualidad .noticia p{
+    color: var(--textWhite);
+    font-size: 20px;
+    padding: 10px 10px;
+}
+
+
+/* Animes zone */
+.animes{
+    grid-area: animes;
+    box-sizing: border-box;
+    font-family: creato;
+    padding: 10px 0;
+    
+}
+.animes .tituloSeccion{
+    text-align: center;
+    font-family:'Grinched';
+    color: var(--textWhite);
+    font-size: 50px;
+}
+.animes .video-anime{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    padding: 30px 0;
+}
+.animes .repertorio-anime {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    }
+    
+    .animes .repertorio-anime .item-anime {
+    width: 33%;
+    display: grid;
+    grid-template-areas: "itemAnime";
+    grid-template-rows: minmax(100px, auto);
+    grid-template-columns: minmax(100px, auto);
+    padding: 15px;
+    align-items: end;
+    }
+
+    .animes .repertorio-anime .item-anime .img-item-anime {
+        grid-area: itemAnime;
+        }
+        
+        .animes .repertorio-anime .item-anime .img-anime {
+        grid-area: itemAnime;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        }
+        
+        .animes .repertorio-anime .item-anime .txt-item-anime {
+        grid-area: itemAnime;
+        padding: 30px;
+        text-shadow: 4px 4px 4px rgba(29, 13, 17, .5);
+        background-image: linear-gradient(to top, #070c16, transparent);
+        }
+
+    .animes .repertorio-anime .item-anime .txt-item-anime h1 {
+        font-family: 'Anton', sans-serif;
+        font-size: 35px;
+        color: var(--textWhite);
+        }
+        
+        .animes .repertorio-anime .item-anime .txt-item-anime h2 {
+        font-weight: lighter;
+        font-size: 25px;
+        color: var(--textWhite);
+        }
+    .animes .repertorio-anime .item-anime .txt-item-anime:hover{
+        background-image: linear-gradient(to bottom, #070c16, transparent);        transition: transform 0.4s;
+        transform: scale(1.01);
+
+    }    
+    .animes .repertorio-anime .item-anime .txt-item-anime .btn-ver-anime{
+        font-size: 18px;
+        cursor: pointer;
+        background-color: transparent;
+        color: var(--textWhite);
+        border: solid 2px;
+        padding: 10px 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+    .animes .repertorio-anime .item-anime .txt-item-anime .btn-ver-anime:hover{
+    box-shadow: 2px 2px 15px 15px rgba(243, 243, 243, 0.5);
+    transform: translateX(10px);
+    transition: box-shadow , transform 0.4s;
+    }
+    .animes .repertorio-anime .item-anime .txt-item-anime .btn-ver-anime:not(:hover){
+        transform: translateX(0);
+        transition: box-shadow , transform 0.4s;
+        }
+
+
+        /* comunidad */
+    .comunidad{
+        grid-area: comunidad;
+        box-sizing: border-box;
+        font-family: 'Creato' cursive;
+        padding: 10px 0;
+        color: var(--textWhite);
+    }
+    .comunidad .tituloSeccion{
+        text-align: center;
+        font-family:'Grinched';
+        color: var(--textWhite);
+        font-size: 50px;
+    }
+
+    .comunidad .lista-comunidad{
+        display: grid;
+        grid-template-columns: repeat(9, minmax(auto, 1fr));
+        grid-template-rows: minmax(100px, 300px);
+        padding: 30px 40px;
+    }
+    .comunidad .lista-comunidad .img-lateral{
+        grid-area: 1  / 1 / 4 / 3;
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+
+    .comunidad .lista-comunidad .titulo-img-comunidad--size{ 
+    font-size: 100px;
+    }
+    .comunidad .lista-comunidad .titulo-img-comunidad{
+        font-family: 'Grinched';
+        color: var(--textWhite);
+        font-size: 50px;
+        text-align: center;
+        letter-spacing: 4px;
+        text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    }
+    .comunidad .lista-comunidad .titulo-arena-fanArt{
+        font-family: 'Grinched';
+        color: var(--textWhite);
+        font-size: 50px;
+        text-align: center;
+        letter-spacing: 4px;
+        text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .comunidad .lista-comunidad .arena{
+        grid-area: 1 / 2 / 3 / 6;
+        background: url(../images/animefinal/inicio.jpg);
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+
+    }
+    .comunidad .lista-comunidad .fanArt{
+        grid-area: 2 / 6 / 4 / 10;
+        background: url(../images/animefinal/luffy.png);
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+    }
+    .comunidad .lista-comunidad .originalFreak{
+        grid-area: 1 / 6 / 2 / 8;
+        background: url(../images/animefinal/originalFreak.png);
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+    }
+    .comunidad .lista-comunidad .blog{
+        grid-area: 1 / 8 / 2 / 10;
+        background: url(../images/animefinal/blog.jpg);
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+    }
+    .comunidad .lista-comunidad .webDescargas{
+        grid-area: 3/2/4/4;
+        background: url(../images/animefinal/portada.jpg);
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+        z-index: 3;
+    }
+    .comunidad .lista-comunidad .eventos{
+        grid-area: 3 / 4 / 4 / 6;
+        background: url(../images/animefinal/japan_weekend.png);
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+        z-index: 3;
+        background-repeat: no-repeat;
+        border: 1px solid var(--fondoitem);
+       }
+
+       .comunidad.lista-comunidad .div-txt-comunidad{
+        height: 100%;
+        transition: all 0.5s ease-in-out    
+       }
+/*  FIN CUERPO PÁGINA  *************************************/
+
+
+
+
+/*  FOOTER  **********************************************/
+footer{
+    margin-top: 20px;
+    padding: 30px;
+    background-color: #212F3C;
+    color: white;
+
+}
+
+/* HEADER RESPONSIVE  **********************************************/
+
+@media screen and (max-width: 768px) {
+
+    body {
+        margin-bottom: 60px; /*esto evitará que el footer quede oculto al
+        poner la cabecera en la parte inferior de la pantalla, por eso
+        utilizamos 60px, porque es la medida de nuestra cabecera para
+        pantalla tamaño móvil*/
+    }
+    .cabecera{
+        position: fixed;
+        bottom: 0;
+        height: 60px; /*reducimos un poco el alto de la cabecera*/
+        justify-content: space-between;
+        padding: 0 30px; /* para evitar que ambos elementos, logo y menú,
+        queden muy pegados a los lados, añadimos algo de espacio a 
+        los lados*/
+        width: 100%;
+        background-color: var(--background);
+    }
+    .cabecera .logo{
+        font-size: 30px; /*cambiamos el tamaño de fuente*/
+    }
+    .cabecera .mainMenu .nav-links{
+        display: flex; /*añadimos flexbox dentro de nuestro menú, para manerar los items*/
+        flex-direction: column; /*alineamos el menú de manera vertical*/
+        background-color: var(--cabecera);
+        position: fixed; /*damos position fixed para que la posición no dependa 
+        de donde se encuentra en el html sino de la ventana y las indicaciones 
+        que le demos*/
+        bottom: 60px; /*damos la medida de la cabecera para que comience
+        cuando la cabecera termine*/
+        width: 100%; /*Llenamos el ancho de la página*/
+        align-items: center; /*centramos los elementos del menú*/
+        padding: 20px 0; /*introducimos espacio  arriba y abajo
+        para no dejar el menú muy pegado a la cabecera, recordar
+        que pongo dos valores porque sólo quiero el espacio arriba y 
+        abajo, no a los lados*/
+        left: 0%;  /*situamos el menú a la izquierda*/
+        bottom: 60px; /*ponemos el margen inferior 
+        a 60px, que es lo que ocupa el height de la 
+        cabecera en modo pantalla móvil.*/
+        z-index: -1; /*ponemos un z-index negativo, para que 
+        el menú se sitúe detrás de la cabecera y no por encima*/
+        visibility: hidden;
+    } 
+    .cabecera .mainMenu .nav-links li{
+        line-height: 40px; /*incluimos un poco de espacio entre las
+        opciones del menú*/
+    }
+    .cabecera .mainMenu .btn-mainMenu{
+  
+        display: block;  /*mostramos el caracter de menu*/
+    }
+    .cabecera .mainMenu .nav-links--visible{  
+        visibility: visible;
+    }
+
+/* FIN HEADER RESPONSIVE  **********************************************/
+/* INICIO TITULAR RESPONSIVE */
+.titular{
+    margin-left: 30px;
+}
+.notiactualidad{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 350px 350px 350px ;
+    padding: 10px;
+}
+.notiactualidad .noticia .imgnoticia{
+    align-self: center;
+}
+.notiactualidad .noticia h2{
+    font-size: 20px;
+}
+/* FINAL TITULAR RESPONSIVE */
+/* ANIMES RESPONSIVE */
+.animes .repertorio-anime .item-anime {
+    width: 90%;
+
+}
+.animes .repertorio-anime .item-anime .txt-item-anime {
+    border: 1px solid;
+    border-radius: 50px;
+    padding: 5px;
+    text-shadow: 4px 4px 2px rgba(29, 13, 17, .5);
+    
+    }
+.animes .repertorio-anime .item-anime .txt-item-anime .btn-ver-anime{
+display: none;
+}
+}

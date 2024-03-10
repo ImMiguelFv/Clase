@@ -1,0 +1,113 @@
+<!-- Crea una página HTML con mucho contenido de prueba y un programa que, tras la carga de la página, espere 10 segundos y haga scroll hasta el final de la misma.
+ -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+    <style>
+        /* Estilo adicional para llenar la página con contenido de prueba */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 200vh; /* Altura equivalente a 200% de la altura de la ventana */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        
+    </header>
+
+    <section>
+        <h1>Tarta de Queso</h1>
+        <h2>Ingredientes:</h2>
+        <ul>
+            <li>200 g de galletas</li>
+            <li>100 g de mantequilla derretida</li>
+            <li>500 g de queso crema</li>
+            <li>150 g de azúcar</li>
+            <li>3 huevos</li>
+            <li>1 cucharadita de esencia de vainilla</li>
+            <li>200 ml de crema agria</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Instrucciones:</h2>
+        <ol>
+            <li>Precalienta el horno a 180°C.</li>
+            <li>Tritura las galletas hasta obtener migas finas. Mezcla las migas de galletas con la mantequilla derretida y presiona la mezcla en el fondo de un molde para tarta.</li>
+            <li>En un tazón grande, bate el queso crema hasta que esté suave. Agrega el azúcar y continúa batiendo.</li>
+            <li>Añade los huevos uno por uno, batiendo bien después de cada adición. Agrega la esencia de vainilla y la crema agria, y mezcla hasta obtener una mezcla homogénea.</li>
+            <li>Vierte la mezcla sobre la base de galletas en el molde.</li>
+            <li>Hornea durante aproximadamente 45-50 minutos o hasta que el centro esté firme. Deja enfriar completamente antes de refrigerar.</li>
+            <li>Refrigera durante al menos 4 horas o durante toda la noche antes de servir.</li>
+        </ol>
+        <p>¡Disfruta de tu deliciosa tarta de queso!</p>
+    </section>
+
+    <section>
+        <h1>Ensalada de Pollo a la Parrilla con Aderezo de Limón y Hierbas</h1>
+        <h2>Ingredientes:</h2>
+        <ul>
+            <li>Pechugas de pollo (2 unidades)</li>
+            <li>Lechuga romana (1 cabeza)</li>
+            <li>Tomates cherry (1 taza)</li>
+            <li>Pepino (1 unidad)</li>
+            <li>Aceitunas negras (1/2 taza)</li>
+            <li>Queso feta (1/2 taza, desmenuzado)</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h2>Para el aderezo:</h2>
+        <ul>
+            <li>Aceite de oliva (3 cucharadas)</li>
+            <li>Jugo de limón (2 cucharadas)</li>
+            <li>Ajo picado (1 diente)</li>
+            <li>Albahaca fresca (1 cucharadita, picada)</li>
+            <li>Perejil fresco (1 cucharadita, picado)</li>
+            <li>Sal y pimienta al gusto</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h2>Instrucciones:</h2>
+        <ol>
+            <li>Precalienta la parrilla a fuego medio-alto.</li>
+            <li>Sazona las pechugas de pollo con sal y pimienta al gusto. Luego, ásalas en la parrilla durante 6-8 minutos por cada lado o hasta que estén bien cocidas.</li>
+            <li>Mientras se cocina el pollo, lava y corta la lechuga en trozos grandes. Corta los tomates cherry por la mitad, el pepino en rodajas y las aceitunas negras en rodajas.</li>
+            <li>En un tazón grande, mezcla la lechuga, los tomates, el pepino, las aceitunas y el queso feta.</li>
+            <li>En un tazón pequeño, mezcla el aceite de oliva, el jugo de limón, el ajo picado, la albahaca y el perejil. Agrega sal y pimienta al gusto.</li>
+            <li>Una vez que el pollo esté listo, córtalo en tiras finas.</li>
+            <li>Coloca las tiras de pollo sobre la ensalada y rocía con el aderezo preparado.</li>
+        </ol>
+        <p>¡Listo! Sirve la ensalada de pollo a la parrilla con un toque refrescante de limón y hierbas. ¡Espero que la disfrutes!</p>
+    </section>
+    
+
+    <script>
+        // Función para hacer scroll hasta el final de la página después de 10 segundos
+        function scrollHastaFinal() {
+            setTimeout(function () {
+                console.log("Scroll completado correctamente."); // Este nos confirma qué se realizó correctamente
+                // Hacemos scroll hasta el final de la página
+                window.scrollTo(0, document.body.scrollHeight);
+            }, 10000); // 10 segundos en milisegundos
+            
+        }
+
+        // Llamar a la función al cargar la página
+        window.onload = scrollHastaFinal;
+        
+        
+    </script>
+
+</body>
+</html>
